@@ -130,6 +130,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\PALoginController.cs" />
     <Compile Include="EntityFramework\Customer.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
@@ -224,6 +226,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Package\Index.cshtml" />
+    <Content Include="Views\Package\PackageCreate.cshtml" />
+    <Content Include="Views\Package\PackageEdit.cshtml" />
+    <Content Include="Views\PALogin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
