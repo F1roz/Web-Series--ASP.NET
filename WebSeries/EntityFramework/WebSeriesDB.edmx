@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebSeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CId" />
+          </Key>
+          <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CNmae" Type="varchar" MaxLength="50" />
+          <Property Name="CPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CPhone" Type="varchar" MaxLength="50" />
+          <Property Name="CMail" Type="varchar" MaxLength="50" />
+          <Property Name="CAddress" Type="varchar" MaxLength="50" />
+          <Property Name="CDob" Type="datetime" />
+          <Property Name="PAId" Type="int" />
+          <Property Name="CStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PackageAdmins">
+          <Key>
+            <PropertyRef Name="PAId" />
+          </Key>
+          <Property Name="PAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAName" Type="varchar" MaxLength="50" />
+          <Property Name="PAPassword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="varchar" MaxLength="50" />
+          <Property Name="PPrice" Type="float" />
+          <Property Name="PDesc" Type="varchar" MaxLength="150" />
+          <Property Name="PStartDate" Type="datetime" />
+          <Property Name="PEndDate" Type="datetime" />
+          <Property Name="PCode" Type="varchar" MaxLength="50" />
+          <Property Name="PStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PAId" Type="int" />
+          <Property Name="CId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Customers_Customers">
+          <End Role="PackageAdmins" Type="Self.PackageAdmins" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="PAId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CId" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="CId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins1">
+          <End Role="PackageAdmins" Type="Self.PackageAdmins" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="PAId" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="PAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebSeriesDBModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageAdmins" EntityType="Self.PackageAdmins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customers_Customers" Association="Self.FK_Customers_Customers">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins" Association="Self.FK_Packages_PackageAdmins">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins1" Association="Self.FK_Packages_PackageAdmins1">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebSeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CId" />
+          </Key>
+          <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNmae" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDob" Type="DateTime" Precision="3" />
+          <Property Name="PAId" Type="Int32" />
+          <Property Name="CStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PackageAdmin" Relationship="Self.FK_Customers_Customers" FromRole="Customers" ToRole="PackageAdmins" />
+          <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_PackageAdmins" FromRole="Customers" ToRole="Packages" />
+        </EntityType>
+        <EntityType Name="PackageAdmin">
+          <Key>
+            <PropertyRef Name="PAId" />
+          </Key>
+          <Property Name="PAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Customers" FromRole="PackageAdmins" ToRole="Customers" />
+          <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_PackageAdmins1" FromRole="PackageAdmins" ToRole="Packages" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PPrice" Type="Double" />
+          <Property Name="PDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PStartDate" Type="DateTime" Precision="3" />
+          <Property Name="PEndDate" Type="DateTime" Precision="3" />
+          <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAId" Type="Int32" />
+          <Property Name="CId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Packages_PackageAdmins" FromRole="Packages" ToRole="Customers" />
+          <NavigationProperty Name="PackageAdmin" Relationship="Self.FK_Packages_PackageAdmins1" FromRole="Packages" ToRole="PackageAdmins" />
+        </EntityType>
+        <Association Name="FK_Customers_Customers">
+          <End Role="PackageAdmins" Type="Self.PackageAdmin" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="PAId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="PAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CId" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="CId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins1">
+          <End Role="PackageAdmins" Type="Self.PackageAdmin" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="PAId" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="PAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebSeriesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="PackageAdmins" EntityType="Self.PackageAdmin" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <AssociationSet Name="FK_Customers_Customers" Association="Self.FK_Customers_Customers">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins" Association="Self.FK_Packages_PackageAdmins">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins1" Association="Self.FK_Packages_PackageAdmins1">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebSeriesDBModelStoreContainer" CdmEntityContainer="WebSeriesDBEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="CNmae" ColumnName="CNmae" />
+                <ScalarProperty Name="CPassword" ColumnName="CPassword" />
+                <ScalarProperty Name="CPhone" ColumnName="CPhone" />
+                <ScalarProperty Name="CMail" ColumnName="CMail" />
+                <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+                <ScalarProperty Name="CDob" ColumnName="CDob" />
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+                <ScalarProperty Name="CStatus" ColumnName="CStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageAdmins">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.PackageAdmin">
+              <MappingFragment StoreEntitySet="PackageAdmins">
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+                <ScalarProperty Name="PAName" ColumnName="PAName" />
+                <ScalarProperty Name="PAPassword" ColumnName="PAPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PPrice" ColumnName="PPrice" />
+                <ScalarProperty Name="PDesc" ColumnName="PDesc" />
+                <ScalarProperty Name="PStartDate" ColumnName="PStartDate" />
+                <ScalarProperty Name="PEndDate" ColumnName="PEndDate" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="PStatus" ColumnName="PStatus" />
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
