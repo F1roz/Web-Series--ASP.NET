@@ -11,15 +11,22 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Package
     {
         public int PId { get; set; }
+
+        [Required(ErrorMessage = "Please enter  Nmae")]
         public string PName { get; set; }
+        [Required(ErrorMessage = "Please enter  Price")]
         public Nullable<double> PPrice { get; set; }
+        [Required(ErrorMessage = "Please enter  Decription")]
         public string PDesc { get; set; }
         public Nullable<System.DateTime> PStartDate { get; set; }
         public Nullable<System.DateTime> PEndDate { get; set; }
+
+        [Required(ErrorMessage = "Please enter  Promo Code")]
         public string PCode { get; set; }
         public string PStatus { get; set; }
         public Nullable<int> PAId { get; set; }

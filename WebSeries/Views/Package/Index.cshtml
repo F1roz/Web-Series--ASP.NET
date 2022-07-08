@@ -4,30 +4,56 @@
 }
 
 <h2>Index</h2>
-<h3><a href="@Url.Action("PackageCreate", "Package")">Create</a></h3>
-<h3><a href="@Url.Action("Logout", "PALogin")">Logout</a></h3>
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Promo Code</th>
-        </tr>
+<h3><a class="btn btn-primary" href="@Url.Action("PackageCreate", "Package")">Create</a></h3>
+<h3><a class="btn btn-primary" href="@Url.Action("Logout", "PALogin")">Logout</a></h3>
 
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
+
+<div class="container">
+    @foreach (var p in Model)
+    {
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">@p.PName</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@p.PPrice <small class="text-muted">/ TK</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>@p.PDesc</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Suscribe</button>
+                </div>
+                <div>
+                    <a href="@Url.Action("PackageEdit", "Package", new { id = p.PId })">Edit</a>
+                    <a href="@Url.Action("PackageDelete", "Package", new { id = p.PId })">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@*<table class="table table-condensed">
+        <thead>
             <tr>
-                <td>@p.PName</td>
-                <td>@p.PPrice</td>
-                <td>@p.PDesc</td>
-                <td>@p.PCode</td>
-                <td><a href="@Url.Action("PackageEdit", "Package", new { id = p.PId })">Edit</a></td>
-                <td><a href="@Url.Action("PackageDelete", "Package", new { id = p.PId })">Delete</a></td>
-
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Promo Code</th>
             </tr>
-        }
-    </tbody>
-</table>
+
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.PName</td>
+                    <td>@p.PPrice</td>
+                    <td>@p.PDesc</td>
+                    <td>@p.PCode</td>
+                    <td><a href="@Url.Action("PackageEdit", "Package", new { id = p.PId })">Edit</a></td>
+                    <td><a href="@Url.Action("PackageDelete", "Package", new { id = p.PId })">Delete</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>*@

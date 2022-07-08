@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebSeries.EntityFramework;
+using WebSeriesApplication.Auth;
 
 namespace WebSeries.Controllers
 {
     public class PackageController : Controller
     {
         // GET: Package
+        [Logged]
         public ActionResult Index()
         {
             var db = new WebSeriesDBEntities();
@@ -17,7 +19,7 @@ namespace WebSeries.Controllers
             var p = packages;
             return View(p);
         }
-
+        [Logged]
         public ActionResult PackageCreate()
         {
             return View();
@@ -38,6 +40,7 @@ namespace WebSeries.Controllers
             return View();
         }
 
+        [Logged]
         [HttpGet]
         public ActionResult PackageEdit(int id)
         {
