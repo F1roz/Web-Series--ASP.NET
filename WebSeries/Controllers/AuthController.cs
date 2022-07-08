@@ -33,7 +33,13 @@ namespace WebSeries.Controllers
             }
             else
             {
+                add.Role = "user";
+                User u = new User();
+                u.Name = add.Name;
+                u.Email = add.Email;
+                u.Password = add.Password;
                 db.Logins.Add(add);
+                db.Users.Add(u);
                 db.SaveChanges();
                 ViewBag.Msg = "Account Create Successfully";
                 return RedirectToAction("Login");
