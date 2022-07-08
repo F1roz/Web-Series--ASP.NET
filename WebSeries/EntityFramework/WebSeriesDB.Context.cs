@@ -25,8 +25,13 @@ namespace WebSeries.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<PackageAdmin> PackageAdmins { get; set; }
+        public virtual DbSet<Archive> Archives { get; set; }
+        public virtual DbSet<Expans> Expanses { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<Salary> Salarys { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Video> Videos { get; set; }
     }
 }

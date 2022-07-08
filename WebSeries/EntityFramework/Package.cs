@@ -14,18 +14,14 @@ namespace WebSeries.EntityFramework
     
     public partial class Package
     {
-        public int PId { get; set; }
-        public string PName { get; set; }
-        public Nullable<double> PPrice { get; set; }
-        public string PDesc { get; set; }
-        public Nullable<System.DateTime> PStartDate { get; set; }
-        public Nullable<System.DateTime> PEndDate { get; set; }
-        public string PCode { get; set; }
-        public string PStatus { get; set; }
-        public Nullable<int> PAId { get; set; }
-        public Nullable<int> CId { get; set; }
+        public int PackageId { get; set; }
+        public string PackageName { get; set; }
+        public double PackagePrice { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
+        public string Status { get; set; }
+        public int UserId { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual PackageAdmin PackageAdmin { get; set; }
+        public virtual User User { get; set; }
     }
 }
