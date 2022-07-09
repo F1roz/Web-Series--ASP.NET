@@ -130,44 +130,45 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EntityFramework\Archive.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Expans.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Login.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Package.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Salary.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\sysdiagram.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\User.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Video.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\WebSeriesDB.Context.cs">
+    <Compile Include="EntityFramework\WebSeriseDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDB.Context.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\WebSeriesDB.cs">
+    <Compile Include="EntityFramework\WebSeriseDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\WebSeriesDB.Designer.cs">
+    <Compile Include="EntityFramework\WebSeriseDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,15 +259,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="EntityFramework\WebSeriesDB.Context.tt">
+    <Content Include="EntityFramework\WebSeriseDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
-      <LastGenOutput>WebSeriesDB.Context.cs</LastGenOutput>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriseDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityFramework\WebSeriesDB.tt">
+    <Content Include="EntityFramework\WebSeriseDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
-      <LastGenOutput>WebSeriesDB.cs</LastGenOutput>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriseDB.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -283,12 +284,12 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
-    <EntityDeploy Include="EntityFramework\WebSeriesDB.edmx">
+    <EntityDeploy Include="EntityFramework\WebSeriseDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebSeriesDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>WebSeriseDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EntityFramework\WebSeriesDB.edmx.diagram">
-      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+    <Content Include="EntityFramework\WebSeriseDB.edmx.diagram">
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -323,6 +324,7 @@
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

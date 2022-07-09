@@ -2,7 +2,7 @@
 
 @{
         Layout = null;
-    }
+}
 
 <!DOCTYPE html>
 <html lang="en"
@@ -63,7 +63,7 @@
                         <h3 class="text-center">Web Series</h3>
                         <h4 class="mb-2">Welcome to Login</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
-                        <label>@ViewBag.Msg</label>
+                        <span class="text-danger text-center"> @Html.ViewBag.Msg </span>
                         <form id="formAuthentication" class="mb-3" action="" method="POST">
                             <div class="mb-3">
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email or Username", @autofocus = "" } })

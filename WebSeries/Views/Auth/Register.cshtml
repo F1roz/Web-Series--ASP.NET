@@ -1,4 +1,6 @@
-﻿@{ Layout = null; }
+﻿@{
+    Layout = null;
+}
 
 @model WebSeries.EntityFramework.Login
 
@@ -18,7 +20,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Sing up</title>
 
     <meta name="description" content="" />
 
@@ -65,7 +67,7 @@
                         <h3 class="text-center">Web Series</h3>
                         <h4 class="mb-2">Welcome to Login</h4>
                         <p class="mb-4">Please sign-up to your account and start the adventure</p>
-                        
+
                         <form id="formAuthentication" class="mb-3" action="" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
@@ -73,12 +75,12 @@
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
                             </div>
-                            @*<input type="hidden" name="Role" value="user" />*@
+
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label> @*<span class="text-center text-danger">@ViewBag.Msg</span>*@
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your email or username", @autofocus = "" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            <span class="text-danger"> @Html.ViewBag.Msg </span>
+                                <span class="text-danger"> @Html.ViewBag.Msg </span>
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
