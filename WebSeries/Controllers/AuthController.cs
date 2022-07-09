@@ -18,34 +18,36 @@ namespace WebSeries.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Login log)
+        public ActionResult Login(Login loginData)
         {
             var db = new WebSeriesDBEntities();
-            var isLoggin = db.Logins.Any(x => x.Email == log.Email && x.Password == log.Password);
-            if (isLoggin)
+            var isLoggin = db.Logins.FirstOrDefault(x => x.Email == loginData.Email && x.Password == loginData.Password);
+            if (isLoggin != null)
             {
                 var bc = Request.Browser;
-                var BroswersName = bc.Browser;
+                var BroswerName = bc.Browser;
+                var MachineName = System.Net.Dns.GetHostName();
                 var Platfrom = bc.Platform;
-                var device = Environment.MachineName;
-                string MachineName2 = System.Net.Dns.GetHostName();
-                //HttpBrowserCapabilities bc = Request.Browser;
-
                 CultureInfo en = new CultureInfo("en-US");
                 DateTime dt = DateTime.Now;
-                
                 String format = "MM/dd/yyyy hh:mm:sszzz";
                 String str = dt.ToString(format);
                 DateTime localMechinTime = DateTime.ParseExact(str, format, en.DateTimeFormat);
-                DateTime utcMechinTime = DateTime.ParseExact(str, format, en.DateTimeFormat);
                 TimeZone localZone = TimeZone.CurrentTimeZone;
                 var GMT = localZone.StandardName;
-                var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
-
-                log.BrowserName = BroswersName;
-                db.Logins.Add(log);
+                string GMTSplitSrting = GMT.Split()[0];
+                var osNameVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+                User usr = new User();
+                usr.Device = MachineName;
+                usr.Platform = Platfrom;
+                usr.Browser = BroswerName;
+                usr.Time = localMechinTime;
+                usr.GMT = GMTSplitSrting;
+                usr.OS = osNameVersion;
+                db.Users.Add(usr);
                 db.SaveChanges();
-                FormsAuthentication.SetAuthCookie(log.Email, false);
+
+                FormsAuthentication.SetAuthCookie(loginData.Email, false);
                 return RedirectToAction("List","User");
             }
             else
@@ -74,13 +76,35 @@ namespace WebSeries.Controllers
             }
             else
             {
+                var bc = Request.Browser;
+                var BroswerName = bc.Browser;
+                var MachineName = System.Net.Dns.GetHostName();
+                var Platfrom = bc.Platform;
+                CultureInfo en = new CultureInfo("en-US");
+                DateTime dt = DateTime.Now;
+                String format = "MM/dd/yyyy hh:mm:sszzz";
+                String str = dt.ToString(format);
+                DateTime localMechinTime = DateTime.ParseExact(str, format, en.DateTimeFormat);
+                TimeZone localZone = TimeZone.CurrentTimeZone;
+                var GMT = localZone.StandardName;
+                string GMTSplitSrting = GMT.Split()[0];
+                var osNameVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+
                 add.Role = "user";
-                User u = new User();
-                u.Name = add.Name;
-                u.Email = add.Email;
-                u.Password = add.Password;
+                User usr = new User();
+                usr.Name = add.Name;
+                usr.Email = add.Email;
+                usr.Password = add.Password;
+                usr.Role = "User";
+                usr.Device = MachineName;
+                usr.Platform = Platfrom;
+                usr.Browser = BroswerName;
+                usr.Time = localMechinTime;
+                usr.GMT = GMTSplitSrting;
+                usr.OS = osNameVersion;
+                usr.AccountCreateTime = localMechinTime;
                 db.Logins.Add(add);
-                db.Users.Add(u);
+                db.Users.Add(usr);
                 db.SaveChanges();
                 ViewBag.Msg = "Account Create Successfully";
                 return RedirectToAction("Login");

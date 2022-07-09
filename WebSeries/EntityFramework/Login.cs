@@ -11,29 +11,13 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Login
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Name is required.")]
-        [MinLength(3)]
-        [MaxLength(49)]
-        [RegularExpression(@"^[A-Z -. a-z]+$", ErrorMessage = "Name format did not matched")]
         public string Name { get; set; }
-
-        [Required(ErrorMessage = "Email is required.")]
-        [RegularExpression(@"^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$", ErrorMessage = "Email format did not matched")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Password is required.")]
-        [MinLength(8)]
-        [MaxLength(49)]
         public string Password { get; set; }
         public string Role { get; set; }
-        public string DeviceName { get; set; }
-        public string BrowserName { get; set; }
-        public Nullable<System.TimeSpan> LoginTime { get; set; }
     }
 }

@@ -30,9 +30,6 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Role" Type="varchar" MaxLength="30" />
-          <Property Name="DeviceName" Type="nvarchar" MaxLength="50" />
-          <Property Name="BrowserName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LoginTime" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Packages">
           <Key>
@@ -74,13 +71,19 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="DOB" Type="date" />
           <Property Name="Role" Type="nvarchar" MaxLength="30" />
           <Property Name="Address1" Type="nvarchar" MaxLength="50" />
           <Property Name="Address2" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeviceName" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="Device" Type="nvarchar" MaxLength="50" />
+          <Property Name="Platform" Type="nvarchar" MaxLength="50" />
+          <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="GMT" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountCreateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Videos">
           <Key>
@@ -215,9 +218,6 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DeviceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BrowserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LoginTime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -261,13 +261,19 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="DOB" Type="DateTime" Precision="0" />
           <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeviceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Platform" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="GMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountCreateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Expanses" Relationship="Self.FK_Expanses_Users" FromRole="Users" ToRole="Expanses" />
           <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Users" FromRole="Users" ToRole="Packages" />
           <NavigationProperty Name="Salarys" Relationship="Self.FK_Salarys_Users" FromRole="Users" ToRole="Salarys" />
@@ -408,9 +414,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
-                <ScalarProperty Name="BrowserName" ColumnName="BrowserName" />
-                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -456,13 +459,19 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="GMT" ColumnName="GMT" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="AccountCreateTime" ColumnName="AccountCreateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

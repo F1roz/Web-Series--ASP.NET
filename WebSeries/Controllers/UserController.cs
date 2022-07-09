@@ -7,7 +7,6 @@ using WebSeries.EntityFramework;
 
 namespace WebSeries.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         // GET: User
