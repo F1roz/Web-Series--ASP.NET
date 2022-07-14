@@ -11,9 +11,28 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Package
     {
+<<<<<<< HEAD
+        public int PId { get; set; }
+
+        [Required(ErrorMessage = "Please enter  Nmae")]
+        public string PName { get; set; }
+        [Required(ErrorMessage = "Please enter  Price")]
+        public Nullable<double> PPrice { get; set; }
+        [Required(ErrorMessage = "Please enter  Decription")]
+        public string PDesc { get; set; }
+        public Nullable<System.DateTime> PStartDate { get; set; }
+        public Nullable<System.DateTime> PEndDate { get; set; }
+
+        [Required(ErrorMessage = "Please enter  Promo Code")]
+        public string PCode { get; set; }
+        public string PStatus { get; set; }
+        public Nullable<int> PAId { get; set; }
+        public Nullable<int> CId { get; set; }
+=======
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<double> Price { get; set; }
@@ -24,6 +43,7 @@ namespace WebSeries.EntityFramework
         public string Status { get; set; }
         public int UserId { get; set; }
         public int PackageAdminId { get; set; }
+>>>>>>> master
     
         public virtual PackageAdmin PackageAdmin { get; set; }
         public virtual User User { get; set; }

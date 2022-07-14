@@ -14,18 +14,13 @@
         <div class="card-deck mb-3 text-center">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">@p.Name</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">@p.Price <small class="text-muted">/ TK</small></h1>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>@p.Description</li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Suscribe</button>
                 </div>
                 <div>
-                    <a href="@Url.Action("PackageEdit", "Package", new { id = p.Id })">Edit</a>
-                    <a href="@Url.Action("PackageDelete", "Package", new { id = p.Id })">Delete</a>
                 </div>
             </div>
         </div>
