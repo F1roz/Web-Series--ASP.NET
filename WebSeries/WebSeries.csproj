@@ -121,6 +121,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Auth\Logged.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\PackageAdminController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EntityFramework\Archive.cs">
@@ -320,6 +321,8 @@
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\Package\Index.cshtml" />
     <Content Include="Web.config" />
+    <Content Include="Views\PackageAdmin\Index.cshtml" />
+    <Content Include="Views\Package\PackageCreate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

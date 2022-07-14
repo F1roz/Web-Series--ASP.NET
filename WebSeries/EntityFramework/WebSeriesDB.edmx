@@ -51,7 +51,7 @@
           <Property Name="EndDate" Type="datetime" />
           <Property Name="Code" Type="nchar" MaxLength="10" />
           <Property Name="Status" Type="nvarchar" MaxLength="20" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
           <Property Name="PackageAdminId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Salarys">
@@ -143,7 +143,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Packages_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -284,7 +284,7 @@
           <Property Name="EndDate" Type="DateTime" Precision="3" />
           <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
           <Property Name="PackageAdminId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PackageAdmin" Relationship="Self.FK_Packages_PackageAdmins" FromRole="Packages" ToRole="PackageAdmins" />
           <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Packages" ToRole="Users" />
@@ -398,7 +398,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Packages_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="Packages" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
