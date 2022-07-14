@@ -16,10 +16,10 @@ namespace WebSeries.EntityFramework
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
-        public System.DateTime Desc { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime EndDate { get; set; }
+        public Nullable<double> Price { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
         public string Code { get; set; }
         public string Status { get; set; }
         public int UserId { get; set; }
