@@ -45,18 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,160 +120,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
-    <Compile Include="Auth\Logged.cs" />
-=======
-    <Compile Include="Controllers\AuthController.cs" />
->>>>>>> master
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-<<<<<<< HEAD
-    <Compile Include="EntityFramework\User.cs">
-      <DependentUpon>WebSeries_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeries_DB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeries_DB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeries_DB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeries_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeries_DB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
-=======
-    <Compile Include="EntityFramework\Archive.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Expans.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Login.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Package.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\PackageAdmin.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Salary.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Session.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\sysdiagram.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\User.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\Video.cs">
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeriseDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriseDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeriseDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriseDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebSeriseDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
->>>>>>> master
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\demo.css" />
-    <Content Include="assets\img\avatars\1.png" />
-    <Content Include="assets\img\avatars\5.png" />
-    <Content Include="assets\img\avatars\6.png" />
-    <Content Include="assets\img\avatars\7.png" />
-    <Content Include="assets\img\backgrounds\18.jpg" />
-    <Content Include="assets\img\elements\1.jpg" />
-    <Content Include="assets\img\elements\11.jpg" />
-    <Content Include="assets\img\elements\12.jpg" />
-    <Content Include="assets\img\elements\13.jpg" />
-    <Content Include="assets\img\elements\17.jpg" />
-    <Content Include="assets\img\elements\18.jpg" />
-    <Content Include="assets\img\elements\19.jpg" />
-    <Content Include="assets\img\elements\2.jpg" />
-    <Content Include="assets\img\elements\20.jpg" />
-    <Content Include="assets\img\elements\3.jpg" />
-    <Content Include="assets\img\elements\4.jpg" />
-    <Content Include="assets\img\elements\5.jpg" />
-    <Content Include="assets\img\elements\7.jpg" />
-    <Content Include="assets\img\favicon\favicon.ico" />
-    <Content Include="assets\img\icons\brands\asana.png" />
-    <Content Include="assets\img\icons\brands\behance.png" />
-    <Content Include="assets\img\icons\brands\dribbble.png" />
-    <Content Include="assets\img\icons\brands\facebook.png" />
-    <Content Include="assets\img\icons\brands\github.png" />
-    <Content Include="assets\img\icons\brands\google.png" />
-    <Content Include="assets\img\icons\brands\instagram.png" />
-    <Content Include="assets\img\icons\brands\mailchimp.png" />
-    <Content Include="assets\img\icons\brands\slack.png" />
-    <Content Include="assets\img\icons\brands\twitter.png" />
-    <Content Include="assets\img\icons\unicons\cc-primary.png" />
-    <Content Include="assets\img\icons\unicons\cc-success.png" />
-    <Content Include="assets\img\icons\unicons\cc-warning.png" />
-    <Content Include="assets\img\icons\unicons\chart-success.png" />
-    <Content Include="assets\img\icons\unicons\chart.png" />
-    <Content Include="assets\img\icons\unicons\paypal.png" />
-    <Content Include="assets\img\icons\unicons\wallet-info.png" />
-    <Content Include="assets\img\icons\unicons\wallet.png" />
-    <Content Include="assets\img\illustrations\girl-doing-yoga-light.png" />
-    <Content Include="assets\img\illustrations\man-with-laptop-light.png" />
-    <Content Include="assets\img\illustrations\page-misc-error-light.png" />
-    <Content Include="assets\img\layouts\layout-container-light.png" />
-    <Content Include="assets\img\layouts\layout-fluid-light.png" />
-    <Content Include="assets\img\layouts\layout-without-menu-light.png" />
-    <Content Include="assets\img\layouts\layout-without-navbar-light.png" />
-    <Content Include="assets\js\config.js" />
-    <Content Include="assets\js\dashboards-analytics.js" />
-    <Content Include="assets\js\extended-ui-perfect-scrollbar.js" />
-    <Content Include="assets\js\form-basic-inputs.js" />
-    <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\pages-account-settings-account.js" />
-    <Content Include="assets\js\ui-modals.js" />
-    <Content Include="assets\js\ui-popover.js" />
-    <Content Include="assets\js\ui-toasts.js" />
-    <Content Include="assets\vendor\css\core.css" />
-    <Content Include="assets\vendor\css\pages\page-account-settings.css" />
-    <Content Include="assets\vendor\css\pages\page-auth.css" />
-    <Content Include="assets\vendor\css\pages\page-icons.css" />
-    <Content Include="assets\vendor\css\pages\page-misc.css" />
-    <Content Include="assets\vendor\css\theme-default.css" />
-    <Content Include="assets\vendor\fonts\boxicons.css" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.svg" />
-    <Content Include="assets\vendor\js\bootstrap.js" />
-    <Content Include="assets\vendor\js\helpers.js" />
-    <Content Include="assets\vendor\js\menu.js" />
-    <Content Include="assets\vendor\libs\apex-charts\apex-charts.css" />
-    <Content Include="assets\vendor\libs\apex-charts\apexcharts.js" />
-    <Content Include="assets\vendor\libs\highlight\highlight-github.css" />
-    <Content Include="assets\vendor\libs\highlight\highlight.css" />
-    <Content Include="assets\vendor\libs\highlight\highlight.js" />
-    <Content Include="assets\vendor\libs\jquery\jquery.js" />
-    <Content Include="assets\vendor\libs\masonry\masonry.js" />
-    <Content Include="assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
-    <Content Include="assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
-    <Content Include="assets\vendor\libs\popper\popper.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -290,28 +135,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-<<<<<<< HEAD
-    <Content Include="EntityFramework\WebSeries_DB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
-      <LastGenOutput>WebSeries_DB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityFramework\WebSeries_DB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
-      <LastGenOutput>WebSeries_DB.cs</LastGenOutput>
-=======
-    <Content Include="EntityFramework\WebSeriseDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
-      <LastGenOutput>WebSeriseDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityFramework\WebSeriseDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
-      <LastGenOutput>WebSeriseDB.cs</LastGenOutput>
->>>>>>> master
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -322,27 +145,6 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="assets\.DS_Store" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.eot" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
-<<<<<<< HEAD
-    <EntityDeploy Include="EntityFramework\WebSeries_DB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebSeries_DB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="EntityFramework\WebSeries_DB.edmx.diagram">
-      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
-=======
-    <EntityDeploy Include="EntityFramework\WebSeriseDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebSeriseDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="EntityFramework\WebSeriseDB.edmx.diagram">
-      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
->>>>>>> master
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -358,6 +160,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -365,27 +174,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\User\Registration.cshtml" />
-=======
-    <Content Include="Views\Auth\Register.cshtml" />
-    <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\User\List.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Web.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-=======
->>>>>>> master
->>>>>>> dev-junayed
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="css\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -398,9 +189,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
