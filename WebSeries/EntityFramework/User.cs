@@ -11,6 +11,39 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
+<<<<<<< HEAD
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class User
+    {
+        public int UserId { get; set; }
+        [Required(ErrorMessage = "Please provide Name")]
+        [MinLength(5,ErrorMessage ="Username must be minimum 5-15 characters.")]
+        [MaxLength(15,ErrorMessage ="Username should not be more than 15 characters.")]
+        public string Username { get; set; }
+        [Required(ErrorMessage = "Email can't be empty")]
+        [EmailAddress(ErrorMessage = "Invalid E-mail Address")]
+        public string Email { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Please enter password.")]
+        public string Password { get; set; }
+        [Required]
+        public string Phone { get; set; }
+        [Required(ErrorMessage = "Please enter Date of Birth")]
+        public Nullable<System.DateTime> Dob { get; set; }
+        public string Role { get; set; }
+        [Required]
+        public string Address { get; set; }
+        public string Status { get; set; }
+        public string Device { get; set; }
+        public string Platform { get; set; }
+        public string Browser { get; set; }
+        public Nullable<System.DateTime> Time { get; set; }
+        public Nullable<System.DateTime> GMT { get; set; }
+        public string OS { get; set; }
+        public Nullable<System.DateTime> AccountCreateTime { get; set; }
+=======
     
     public partial class User
     {
@@ -44,5 +77,6 @@ namespace WebSeries.EntityFramework
         public virtual ICollection<Salary> Salarys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Video> Videos { get; set; }
+>>>>>>> master
     }
 }

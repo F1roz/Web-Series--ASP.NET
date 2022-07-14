@@ -135,6 +135,25 @@
 >>>>>>> master
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+<<<<<<< HEAD
+    <Compile Include="EntityFramework\User.cs">
+      <DependentUpon>WebSeries_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeries_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeries_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeries_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeries_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeries_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+=======
     <Compile Include="EntityFramework\Archive.cs">
       <DependentUpon>WebSeriseDB.tt</DependentUpon>
     </Compile>
@@ -179,6 +198,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+>>>>>>> master
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -270,6 +290,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+<<<<<<< HEAD
+    <Content Include="EntityFramework\WebSeries_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+      <LastGenOutput>WebSeries_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\WebSeries_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+      <LastGenOutput>WebSeries_DB.cs</LastGenOutput>
+=======
     <Content Include="EntityFramework\WebSeriseDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebSeriseDB.edmx</DependentUpon>
@@ -279,6 +310,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebSeriseDB.edmx</DependentUpon>
       <LastGenOutput>WebSeriseDB.cs</LastGenOutput>
+>>>>>>> master
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -295,12 +327,21 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
+<<<<<<< HEAD
+    <EntityDeploy Include="EntityFramework\WebSeries_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebSeries_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityFramework\WebSeries_DB.edmx.diagram">
+      <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+=======
     <EntityDeploy Include="EntityFramework\WebSeriseDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebSeriseDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="EntityFramework\WebSeriseDB.edmx.diagram">
       <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+>>>>>>> master
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -324,9 +365,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\User\Registration.cshtml" />
+=======
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\User\List.cshtml" />
+<<<<<<< HEAD
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -334,6 +379,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+=======
+>>>>>>> master
+>>>>>>> dev-junayed
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
