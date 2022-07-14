@@ -23,7 +23,7 @@ namespace WebSeries.EntityFramework
             this.Salarys = new HashSet<Salary>();
             this.Videos = new HashSet<Video>();
         }
-    
+
         public int Id { get; set; }
         //name validation
         [Required(ErrorMessage = "Please enter your name.")]
@@ -38,8 +38,8 @@ namespace WebSeries.EntityFramework
         public string Email { get; set; }
         //pass validation
         [Required(ErrorMessage = "Please enter your Password.")]
-        [MaxLength(49,ErrorMessage ="Password should not be more than 49 characters.")]
-        [MinLength(5,ErrorMessage = "Password should need minimum 5 characters.")]
+        [MaxLength(49, ErrorMessage = "Password should not be more than 49 characters.")]
+        [MinLength(5, ErrorMessage = "Password should need minimum 5 characters.")]
         [DataType(DataType.Password)]
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{5,}$", ErrorMessage = "Passwords must be at least 5 characters ,upper case, lower case, number and special character.")]
         public string Password { get; set; }
@@ -48,16 +48,16 @@ namespace WebSeries.EntityFramework
         [Required(ErrorMessage = "Please enter your phone number.")]
         [RegularExpression(@"\d{11}", ErrorMessage = "Please enter 11 digit Mobile number.")]
         public string Phone { get; set; }
-        [Required(ErrorMessage ="Enter your Date of Birth.")]
+        [Required(ErrorMessage = "Enter your Date of Birth.")]
         public Nullable<System.DateTime> DOB { get; set; }
         public string Role { get; set; }
-        [Required(ErrorMessage ="Permanent address must to be enter.")]
+        [Required(ErrorMessage = "Permanent address must to be enter.")]
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Status { get; set; }
         public Nullable<System.DateTime> AccountCreateTime { get; set; }
         public Nullable<System.DateTime> LoginTime { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expans> Expanses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

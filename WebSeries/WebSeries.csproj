@@ -145,6 +145,9 @@
     <Compile Include="EntityFramework\Session.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\sysdiagram.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\User.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>

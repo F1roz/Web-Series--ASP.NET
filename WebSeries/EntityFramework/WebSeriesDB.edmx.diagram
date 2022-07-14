@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="168e484a28f84a1aa6f0643e13624749" Name="Diagram1">
+      <Diagram DiagramId="806b8394cf1c40a4927aeb001b651951" Name="Diagram1">
         <EntityTypeShape EntityType="WebSeriesDBModel.Archive" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.Expans" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.Login" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="WebSeriesDBModel.Package" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.Salary" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.Session" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSeriesDBModel.sysdiagram" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.User" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSeriesDBModel.Video" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
         <AssociationConnector Association="WebSeriesDBModel.FK_Archives_Videos" ManuallyRouted="false" />
