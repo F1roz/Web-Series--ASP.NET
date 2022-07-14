@@ -14,8 +14,8 @@ namespace WebSeries.EntityFramework
     
     public partial class Expans
     {
-        public int ExpanseId { get; set; }
-        public string ExpanseName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public System.DateTime Date { get; set; }
         public int UserId { get; set; }
     

@@ -20,12 +20,12 @@ namespace WebSeries.EntityFramework
             this.Archives = new HashSet<Archive>();
         }
     
-        public int VideoId { get; set; }
+        public int Id { get; set; }
         public string VideoTitle { get; set; }
         public string Description { get; set; }
-        public System.DateTime UploadDate { get; set; }
+        public Nullable<System.DateTime> UploadDate { get; set; }
         public string Status { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public int UserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archive> Archives { get; set; }

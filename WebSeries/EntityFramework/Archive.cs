@@ -14,7 +14,7 @@ namespace WebSeries.EntityFramework
     
     public partial class Archive
     {
-        public int ArchiveId { get; set; }
+        public int Id { get; set; }
         public int VideoId { get; set; }
     
         public virtual Video Video { get; set; }

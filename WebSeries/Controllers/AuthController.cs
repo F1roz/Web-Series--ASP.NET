@@ -11,6 +11,7 @@ namespace WebSeries.Controllers
 {
     public class AuthController : Controller
     {
+        
         // GET: Auth
         public ActionResult Login()
         {
@@ -37,23 +38,29 @@ namespace WebSeries.Controllers
                 var GMT = localZone.StandardName;
                 string GMTSplitSrting = GMT.Split()[0];
                 var osNameVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
-                User usr = new User();
-                usr.Device = MachineName;
-                usr.Platform = Platfrom;
-                usr.Browser = BroswerName;
-                usr.Time = localMechinTime;
-                usr.GMT = GMTSplitSrting;
-                usr.OS = osNameVersion;
-                db.Users.Add(usr);
+
+                Session se = new Session();
+                se.Name = isLoggin.Name;
+                se.Device = MachineName;
+                se.Platfrom = Platfrom;
+                se.Browser = BroswerName;
+                se.LoginTime = localMechinTime;
+                se.GMT = GMTSplitSrting;
+                se.OS = osNameVersion;
+                se.LoginId = isLoggin.Id;
+
+                var u = (from lt in db.Users where lt.Email == isLoggin.Email select lt).FirstOrDefault();
+                u.LoginTime = localMechinTime;
+                db.Sessions.Add(se);
                 db.SaveChanges();
 
-                FormsAuthentication.SetAuthCookie(loginData.Email, false);
+                FormsAuthentication.SetAuthCookie(isLoggin.Name, true);
+                Session["role"] = isLoggin.Role;
                 return RedirectToAction("List","User");
             }
             else
             {
                 ViewBag.Msg = "Please provide correct email & password";
-
             }
             return View();
         }
@@ -64,9 +71,8 @@ namespace WebSeries.Controllers
             return View();
         }
 
-
         [HttpPost]
-        public ActionResult Register(Login add)
+        public ActionResult Register(User add)
         {
             var db = new WebSeriesDBEntities();
             var user = db.Logins.FirstOrDefault(u => u.Email == add.Email);
@@ -90,26 +96,33 @@ namespace WebSeries.Controllers
                 string GMTSplitSrting = GMT.Split()[0];
                 var osNameVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
 
-                add.Role = "user";
-                User usr = new User();
-                usr.Name = add.Name;
-                usr.Email = add.Email;
-                usr.Password = add.Password;
-                usr.Role = "User";
-                usr.Device = MachineName;
-                usr.Platform = Platfrom;
-                usr.Browser = BroswerName;
-                usr.Time = localMechinTime;
-                usr.GMT = GMTSplitSrting;
-                usr.OS = osNameVersion;
-                usr.AccountCreateTime = localMechinTime;
-                db.Logins.Add(add);
-                db.Users.Add(usr);
+                add.Role = "User";
+                Login log = new Login();
+                log.Name = add.Name;
+                log.Email = add.Email;
+                log.Password = add.Password;
+                log.Role = "User";
+                
+                add.AccountCreateTime = localMechinTime;
+                db.Logins.Add(log);
+                db.Users.Add(add);
                 db.SaveChanges();
                 ViewBag.Msg = "Account Create Successfully";
                 return RedirectToAction("Login");
             }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            var db = new WebSeriesDBEntities();
+            var isLoggin = (from s in db.Sessions where s.Name == User.Identity.Name select s).FirstOrDefault();
+            db.Sessions.Remove(isLoggin);
+            db.SaveChanges();
+            Session.RemoveAll();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

@@ -7,9 +7,11 @@ using WebSeries.EntityFramework;
 
 namespace WebSeries.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         // GET: User
+        [Authorize(Roles = "User")]
         public ActionResult List()
         {
             var db = new WebSeriesDBEntities();

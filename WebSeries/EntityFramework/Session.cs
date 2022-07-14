@@ -12,14 +12,18 @@ namespace WebSeries.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Salary
+    public partial class Session
     {
         public int Id { get; set; }
-        public Nullable<double> Salary1 { get; set; }
-        public string Status { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Device { get; set; }
+        public string Platfrom { get; set; }
+        public string Browser { get; set; }
+        public Nullable<System.DateTime> LoginTime { get; set; }
+        public string GMT { get; set; }
+        public string OS { get; set; }
+        public int LoginId { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Login Login { get; set; }
     }
 }

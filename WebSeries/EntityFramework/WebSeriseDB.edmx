@@ -7,17 +7,17 @@
       <Schema Namespace="WebSeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Archives">
           <Key>
-            <PropertyRef Name="ArchiveId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ArchiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VideoId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Expanses">
           <Key>
-            <PropertyRef Name="ExpanseId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ExpanseId" Type="int" Nullable="false" />
-          <Property Name="ExpanseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
@@ -29,29 +29,54 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="Role" Type="varchar" MaxLength="30" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PackageAdmins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Packages">
           <Key>
-            <PropertyRef Name="PackageId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="PackageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PackageName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PackagePrice" Type="float" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Desc" Type="datetime" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="EndDate" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PackageAdminId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Salarys">
           <Key>
-            <PropertyRef Name="SalaryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Salary" Type="float" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="float" />
+          <Property Name="Status" Type="varchar" MaxLength="8" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Device" Type="nvarchar" MaxLength="50" />
+          <Property Name="Platfrom" Type="nvarchar" MaxLength="30" />
+          <Property Name="Browser" Type="nvarchar" MaxLength="30" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="GMT" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="30" />
+          <Property Name="LoginId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -65,9 +90,9 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
@@ -77,31 +102,26 @@
           <Property Name="Address1" Type="nvarchar" MaxLength="50" />
           <Property Name="Address2" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="10" />
-          <Property Name="Device" Type="nvarchar" MaxLength="50" />
-          <Property Name="Platform" Type="nvarchar" MaxLength="50" />
-          <Property Name="Browser" Type="nvarchar" MaxLength="50" />
-          <Property Name="Time" Type="datetime" />
-          <Property Name="GMT" Type="nvarchar" MaxLength="50" />
-          <Property Name="OS" Type="nvarchar" MaxLength="50" />
           <Property Name="AccountCreateTime" Type="datetime" />
+          <Property Name="LoginTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Videos">
           <Key>
-            <PropertyRef Name="VideoId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="VideoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VideoTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UploadDate" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="7" Nullable="false" />
-          <Property Name="UserId" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="UploadDate" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="7" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Archives_Videos">
           <End Role="Videos" Type="Self.Videos" Multiplicity="1" />
           <End Role="Archives" Type="Self.Archives" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Videos">
-              <PropertyRef Name="VideoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Archives">
               <PropertyRef Name="VideoId" />
@@ -113,10 +133,22 @@
           <End Role="Expanses" Type="Self.Expanses" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Expanses">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins">
+          <End Role="PackageAdmins" Type="Self.PackageAdmins" Multiplicity="1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="PackageAdminId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -125,7 +157,7 @@
           <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Packages">
               <PropertyRef Name="UserId" />
@@ -137,19 +169,31 @@
           <End Role="Salarys" Type="Self.Salarys" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Salarys">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sessions_Logins">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Videos_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Videos">
               <PropertyRef Name="UserId" />
@@ -160,8 +204,10 @@
           <EntitySet Name="Archives" EntityType="Self.Archives" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expanses" EntityType="Self.Expanses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageAdmins" EntityType="Self.PackageAdmins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salarys" EntityType="Self.Salarys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
@@ -173,6 +219,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Expanses" EntitySet="Expanses" />
           </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins" Association="Self.FK_Packages_PackageAdmins">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
           <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Packages" EntitySet="Packages" />
@@ -180,6 +230,10 @@
           <AssociationSet Name="FK_Salarys_Users" Association="Self.FK_Salarys_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Salarys" EntitySet="Salarys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sessions_Logins" Association="Self.FK_Sessions_Logins">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
           <AssociationSet Name="FK_Videos_Users" Association="Self.FK_Videos_Users">
             <End Role="Users" EntitySet="Users" />
@@ -193,18 +247,18 @@
       <Schema Namespace="WebSeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Archive">
           <Key>
-            <PropertyRef Name="ArchiveId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ArchiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VideoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Video" Relationship="Self.FK_Archives_Videos" FromRole="Archives" ToRole="Videos" />
         </EntityType>
         <EntityType Name="Expans">
           <Key>
-            <PropertyRef Name="ExpanseId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ExpanseId" Type="Int32" Nullable="false" />
-          <Property Name="ExpanseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Expanses_Users" FromRole="Expanses" ToRole="Users" />
@@ -217,31 +271,60 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK_Sessions_Logins" FromRole="Logins" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="PackageAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_PackageAdmins" FromRole="PackageAdmins" ToRole="Packages" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
-            <PropertyRef Name="PackageId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PackageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PackagePrice" Type="Double" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Desc" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PackageAdminId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PackageAdmin" Relationship="Self.FK_Packages_PackageAdmins" FromRole="Packages" ToRole="PackageAdmins" />
           <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Packages" ToRole="Users" />
         </EntityType>
         <EntityType Name="Salary">
           <Key>
-            <PropertyRef Name="SalaryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Salary1" Type="Double" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary1" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Salarys_Users" FromRole="Salarys" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Platfrom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Browser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="GMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LoginId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Sessions_Logins" FromRole="Sessions" ToRole="Logins" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -255,9 +338,9 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -267,13 +350,8 @@
           <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Platform" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Time" Type="DateTime" Precision="3" />
-          <Property Name="GMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AccountCreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Expanses" Relationship="Self.FK_Expanses_Users" FromRole="Users" ToRole="Expanses" />
           <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Users" FromRole="Users" ToRole="Packages" />
           <NavigationProperty Name="Salarys" Relationship="Self.FK_Salarys_Users" FromRole="Users" ToRole="Salarys" />
@@ -281,14 +359,14 @@
         </EntityType>
         <EntityType Name="Video">
           <Key>
-            <PropertyRef Name="VideoId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="VideoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VideoTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserId" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UploadDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Archives" Relationship="Self.FK_Archives_Videos" FromRole="Videos" ToRole="Archives" />
           <NavigationProperty Name="User" Relationship="Self.FK_Videos_Users" FromRole="Videos" ToRole="Users" />
         </EntityType>
@@ -297,7 +375,7 @@
           <End Role="Archives" Type="Self.Archive" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Videos">
-              <PropertyRef Name="VideoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Archives">
               <PropertyRef Name="VideoId" />
@@ -309,10 +387,34 @@
           <End Role="Expanses" Type="Self.Expans" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Expanses">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sessions_Logins">
+          <End Role="Logins" Type="Self.Login" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_PackageAdmins">
+          <End Role="PackageAdmins" Type="Self.PackageAdmin" Multiplicity="1" />
+          <End Role="Packages" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageAdmins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="PackageAdminId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -321,7 +423,7 @@
           <End Role="Packages" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Packages">
               <PropertyRef Name="UserId" />
@@ -333,7 +435,7 @@
           <End Role="Salarys" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Salarys">
               <PropertyRef Name="UserId" />
@@ -341,11 +443,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Videos_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Videos" Type="Self.Video" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Videos">
               <PropertyRef Name="UserId" />
@@ -356,8 +458,10 @@
           <EntitySet Name="Archives" EntityType="Self.Archive" />
           <EntitySet Name="Expanses" EntityType="Self.Expans" />
           <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="PackageAdmins" EntityType="Self.PackageAdmin" />
           <EntitySet Name="Packages" EntityType="Self.Package" />
           <EntitySet Name="Salarys" EntityType="Self.Salary" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Videos" EntityType="Self.Video" />
@@ -368,6 +472,14 @@
           <AssociationSet Name="FK_Expanses_Users" Association="Self.FK_Expanses_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Expanses" EntitySet="Expanses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sessions_Logins" Association="Self.FK_Sessions_Logins">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_PackageAdmins" Association="Self.FK_Packages_PackageAdmins">
+            <End Role="PackageAdmins" EntitySet="PackageAdmins" />
+            <End Role="Packages" EntitySet="Packages" />
           </AssociationSet>
           <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
             <End Role="Users" EntitySet="Users" />
@@ -391,7 +503,7 @@
           <EntitySetMapping Name="Archives">
             <EntityTypeMapping TypeName="WebSeriesDBModel.Archive">
               <MappingFragment StoreEntitySet="Archives">
-                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -399,8 +511,8 @@
           <EntitySetMapping Name="Expanses">
             <EntityTypeMapping TypeName="WebSeriesDBModel.Expans">
               <MappingFragment StoreEntitySet="Expanses">
-                <ScalarProperty Name="ExpanseId" ColumnName="ExpanseId" />
-                <ScalarProperty Name="ExpanseName" ColumnName="ExpanseName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
@@ -417,27 +529,54 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PackageAdmins">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.PackageAdmin">
+              <MappingFragment StoreEntitySet="PackageAdmins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="WebSeriesDBModel.Package">
               <MappingFragment StoreEntitySet="Packages">
-                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
-                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
-                <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PackageAdminId" ColumnName="PackageAdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Salarys">
             <EntityTypeMapping TypeName="WebSeriesDBModel.Salary">
               <MappingFragment StoreEntitySet="Salarys">
-                <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Salary1" ColumnName="Salary" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.Session">
+              <MappingFragment StoreEntitySet="Sessions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="Platfrom" ColumnName="Platfrom" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="GMT" ColumnName="GMT" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -455,7 +594,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WebSeriesDBModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -465,20 +604,15 @@
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Device" ColumnName="Device" />
-                <ScalarProperty Name="Platform" ColumnName="Platform" />
-                <ScalarProperty Name="Browser" ColumnName="Browser" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="GMT" ColumnName="GMT" />
-                <ScalarProperty Name="OS" ColumnName="OS" />
                 <ScalarProperty Name="AccountCreateTime" ColumnName="AccountCreateTime" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Videos">
             <EntityTypeMapping TypeName="WebSeriesDBModel.Video">
               <MappingFragment StoreEntitySet="Videos">
-                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
