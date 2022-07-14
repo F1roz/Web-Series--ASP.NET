@@ -18,10 +18,10 @@ namespace WebSeries.EntityFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PackageAdmin()
         {
-            this.Customers = new HashSet<Customer>();
             this.Packages = new HashSet<Package>();
         }
     
+<<<<<<< HEAD
         public int PAId { get; set; }
 
         [Required(ErrorMessage = "Please enter  Nmae")]
@@ -32,9 +32,12 @@ namespace WebSeries.EntityFramework
         [Required(ErrorMessage = "Please enter  Password")]
         [MaxLength(8, ErrorMessage = "maximum 8 characters")]
         public string PAPassword { get; set; }
+=======
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+>>>>>>> master
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages { get; set; }
     }
