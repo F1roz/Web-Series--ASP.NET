@@ -77,8 +77,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email or Username</label> @*<span class="text-center text-danger">@ViewBag.Msg</span>*@
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your email or username", @autofocus = "" } })
+                                <label for="email" class="form-label">Email</label> @*<span class="text-center text-danger">@ViewBag.Msg</span>*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your email", @autofocus = "" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 <span class="text-danger"> @Html.ViewBag.Msg </span>
                             </div>
@@ -96,6 +96,33 @@
                                 </div>
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Phone", @autofocus = "" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="dob" class="form-label">DOB</label>
+                                <input class="form-control" type="date" id="dob" name="DOB" autofocus />
+                                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address1" class="form-label">Permanent Address</label>
+                                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Permanent address", @autofocus = "" } })
+                                @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address2" class="form-label">Present Address (Optional)</label>
+                                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Present address", @autofocus = "" } })
+                                @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+                            </div>
+
+
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
