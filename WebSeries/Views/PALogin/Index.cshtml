@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="" method="post">
+
+    @*<input type="text" class="form-control" name="PAName" placeholder="Name" />
+    @Html.ValidationMessage("PAName", new { @class = "text-danger" })<br>
+    <input type="password" class="form-control" name="PAPassword" placeholder="Password" />
+    @Html.ValidationMessage("PAPassword", new { @class = "text-danger" })<br>
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>*@
+
+
+    <div class="mb-3">
+        <label for="exampleInputName" class="form-label">Email address</label>
+        <input type="text" class="form-control"  name="PAName"  placeholder="Name" >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="PAPassword" placeholder="Password">
+    </div>
+    <button type="submit" value="Login" class="btn btn-primary">Submit</button>
+</form>
