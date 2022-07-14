@@ -31,6 +31,10 @@ namespace WebSeries.Controllers
             if (ModelState.IsValid)
             {
                 WebSeriesDBEntities db = new WebSeriesDBEntities();
+                var name = Session["user_name"].ToString();
+                var a = (from p in db.PackageAdmins where p.Name == name select p).SingleOrDefault();
+                //Package package = new Package();
+                add.PackageAdminId = a.Id;
                 db.Packages.Add(add);
                 db.SaveChanges();
                 ViewBag.Msg = "Added Successfully";
