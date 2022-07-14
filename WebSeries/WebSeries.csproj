@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -129,8 +128,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
+    <Compile Include="Auth\Logged.cs" />
+=======
+    <Compile Include="Controllers\AuthController.cs" />
+>>>>>>> master
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+<<<<<<< HEAD
     <Compile Include="EntityFramework\User.cs">
       <DependentUpon>WebSeries_DB.tt</DependentUpon>
     </Compile>
@@ -148,11 +153,58 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+=======
+    <Compile Include="EntityFramework\Archive.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Expans.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Login.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Package.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\PackageAdmin.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Salary.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Session.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sysdiagram.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\User.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Video.cs">
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeriseDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriseDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeriseDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriseDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeriseDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+>>>>>>> master
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\demo.css" />
@@ -238,6 +290,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+<<<<<<< HEAD
     <Content Include="EntityFramework\WebSeries_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebSeries_DB.edmx</DependentUpon>
@@ -247,6 +300,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebSeries_DB.edmx</DependentUpon>
       <LastGenOutput>WebSeries_DB.cs</LastGenOutput>
+=======
+    <Content Include="EntityFramework\WebSeriseDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriseDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\WebSeriseDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriseDB.cs</LastGenOutput>
+>>>>>>> master
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -263,12 +327,21 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
+<<<<<<< HEAD
     <EntityDeploy Include="EntityFramework\WebSeries_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebSeries_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="EntityFramework\WebSeries_DB.edmx.diagram">
       <DependentUpon>WebSeries_DB.edmx</DependentUpon>
+=======
+    <EntityDeploy Include="EntityFramework\WebSeriseDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebSeriseDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityFramework\WebSeriseDB.edmx.diagram">
+      <DependentUpon>WebSeriseDB.edmx</DependentUpon>
+>>>>>>> master
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -285,13 +358,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -299,10 +365,17 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\User\Registration.cshtml" />
+=======
+    <Content Include="Views\Auth\Register.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -352,10 +425,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
