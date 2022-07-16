@@ -12,7 +12,7 @@ namespace WebSeries.EntityFramework
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,22 +25,23 @@ namespace WebSeries.EntityFramework
         }
 
         public int Id { get; set; }
+
         //name validation
         [Required(ErrorMessage = "Please enter your name.")]
-        [MinLength(3, ErrorMessage = "Username must have at least 3 characters.")]
-        [MaxLength(49, ErrorMessage = "UserName should not more than 49 characters.")]
+        [RegularExpression(@"^.{3,}$", ErrorMessage = "Minimum 3 characters required")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Maximum 49 characters")]
         public string Name { get; set; }
+
         //email validation
         [Required(ErrorMessage = "Please enter your email address.")]
-        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$", ErrorMessage = "Email format did not matched")]
         [MaxLength(50)]
-        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string Email { get; set; }
+
         //pass validation
         [Required(ErrorMessage = "Please enter your Password.")]
         [MaxLength(49, ErrorMessage = "Password should not be more than 49 characters.")]
         [MinLength(5, ErrorMessage = "Password should need minimum 5 characters.")]
-        [DataType(DataType.Password)]
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{5,}$", ErrorMessage = "Passwords must be at least 5 characters ,upper case, lower case, number and special character.")]
         public string Password { get; set; }
 
@@ -48,14 +49,24 @@ namespace WebSeries.EntityFramework
         [Required(ErrorMessage = "Please enter your phone number.")]
         [RegularExpression(@"\d{11}", ErrorMessage = "Please enter 11 digit Mobile number.")]
         public string Phone { get; set; }
-        [Required(ErrorMessage = "Enter your Date of Birth.")]
+
+        //dob validation
+        
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DOB { get; set; }
         public string Role { get; set; }
+
+        //address validation
         [Required(ErrorMessage = "Permanent address must to be enter.")]
+        [RegularExpression(@"^.{3,}$", ErrorMessage = "Minimum 3 characters required")]
+        [StringLength(49, MinimumLength = 4, ErrorMessage = "Maximum 49 characters")]
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Status { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> AccountCreateTime { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> LoginTime { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
