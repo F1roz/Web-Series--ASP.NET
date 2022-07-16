@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@*@model WebSeries.EntityFramework.User*@
+<!DOCTYPE html>
 <html lang="en"
       class="light-style layout-menu-fixed"
       dir="ltr"
       data-theme="theme-default"
-      data-assets-path="~/assets/"
+      data-assets-path="../assets/"
       data-template="vertical-menu-template-free">
 <head>
     <meta charset="utf-8" />
@@ -42,6 +43,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script type="text/javascript" src="@Url.Content("~/assets/js/config.js")"></script>
+
 
 </head>
 
@@ -454,21 +456,13 @@
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a class="github-button"
-                                   href="https://github.com/themeselection/sneat-html-admin-template-free"
-                                   data-icon="octicon-star"
-                                   data-size="large"
-                                   data-show-count="true"
-                                   aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
-                            </li>
-
+                            
+ 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="~/assets/img/avatars/1.png"  class="w-px-40 h-auto rounded-circle" />
+                                        <img src="~/assets/img/avatars/1.png" class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -477,17 +471,25 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="~/assets/img/avatars/1.png"  class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="~/assets/img/avatars/1.png" class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-semibold d-block">
                                                         @if (User.Identity.IsAuthenticated)
-                                                        {
-                                                            @User.Identity.Name
+                                                            {
+                                                                @User.Identity.Name
+                                                            }
+                                                    </span>
+                                                    <small class="text-muted">
+                                                       
+                                                        @*@{ 
+                                                            string email = string.Empty;
+                                                            
+                                                            email = Request.Cookies["email"].Value;
                                                         }
-                                                                                                    </span>
-                                                    <small class="text-muted">@Session["role"]</small>
+                                                        @email*@
+                                                    </small>
                                                 </div>
                                             </div>
                                         </a>
@@ -496,13 +498,15 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
+                                        @*@Url.Action("Account", "User", new { id = Model.Id }*@
+                                                                        <a class="dropdown-item" href=")">
+                                                                            <i class="bx bx-user me-2"></i>
+                                                                            <span class="align-middle">My Profile</span>
+                                                                        </a>
+                                                                    </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        @*@Url.Action("AccountSetting", "User", new { id = Model.Id })*@
+                                        <a class="dropdown-item" href="">
                                             <i class="bx bx-cog me-2"></i>
                                             <span class="align-middle">Settings</span>
                                         </a>
@@ -549,7 +553,7 @@
     <!-- build:js assets/vendor/js/core.js -->
     <script type="text/javascript" src="@Url.Content("~/assets/vendor/libs/jquery/jquery.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/assets/vendor/libs/popper/popper.js")"></script>
-  
+
     <script type="text/javascript" src="@Url.Content("~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js")"></script>
 
     <script type="text/javascript" src="@Url.Content("~/assets/vendor/js/menu.js")"></script>
@@ -561,6 +565,16 @@
     <!-- Page JS -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script src="~/assets/vendor/js/bootstrap.js"></script>
+
+
+
+
+
+
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

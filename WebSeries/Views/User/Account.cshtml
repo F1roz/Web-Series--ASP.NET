@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
+                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i>Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("AccountSetting", "User" , new { id = Model.Id })"><i class="bx bx-cog me-1"></i> Account Setting</a>
@@ -91,9 +91,11 @@
                             </div>
                             <div class="mt-2">
                                 <a class="btn btn-primary me-2" href="@Url.Action("AccountSetting", "User" , new { id = Model.Id })"><i class="bx bx-cog me-1"></i>Account Setting</a>
-                                
+
+
+                                <a class="btn btn-danger me-2" href="@Url.Action("List", "User" , new { id = Model.Id })"><i class="bx bx-left-arrow-circle me-1"></i>Go Back</a>
+
                                
-                                @Html.ActionLink("Cancel", "List", "User", null, new { @class = "btn btn-outline-secondary" })
                             </div>
                         </form>
                     </div>
