@@ -11,7 +11,8 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Login
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,13 @@ namespace WebSeries.EntityFramework
     
         public int Id { get; set; }
         public string Name { get; set; }
+        [Required(ErrorMessage = "Please enter your email address.")]
+        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$", ErrorMessage = "Email format did not matched")]
+        [MaxLength(49)]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Please enter your password.")]
         public string Password { get; set; }
         public string Role { get; set; }
     

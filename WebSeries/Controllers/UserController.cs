@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebSeries.EntityFramework;
@@ -11,13 +14,100 @@ namespace WebSeries.Controllers
     public class UserController : Controller
     {
         // GET: User
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         public ActionResult List()
         {
             var db = new WebSeriesDBEntities();
             List<User> user = db.Users.ToList();
             var u = user;
             return View(u);
+        }
+
+        [HttpGet]
+        public ActionResult Account(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var db = new WebSeriesDBEntities();
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        
+        public ActionResult AccountSetting(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var db = new WebSeriesDBEntities();
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccountSetting([Bind(Include = "Id,Name,Email,Password,Phone,DOB,Role,Address1,Address2,Status,AccountCreateTime,LoginTime")] User user)
+        {
+            var db = new WebSeriesDBEntities();
+            if (ModelState.IsValid)
+            {
+                Login log = new Login();
+                var u = (from lt in db.Logins where lt.Email == user.Email select lt).FirstOrDefault();
+                log.Name = u.Name;
+                log.Password = user.Password;
+                log.Role = user.Role;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("List");
+            }
+            //if (ModelState.IsValid)
+            //{
+            //    v
+            //    var user = (from n in db.Users where n.Id == u.Id select n).FirstOrDefault();
+            //    db.Entry(user).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("List");
+            //}
+            return View();
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            var db = new WebSeriesDBEntities();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Test/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var db = new WebSeriesDBEntities();
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }

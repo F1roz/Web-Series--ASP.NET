@@ -19,6 +19,7 @@ namespace WebSeries.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(Login loginData)
         {
             var db = new WebSeriesDBEntities();
@@ -72,6 +73,7 @@ namespace WebSeries.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(User add)
         {
             var db = new WebSeriesDBEntities();
