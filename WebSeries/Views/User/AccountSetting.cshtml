@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <ul class="nav nav-pills flex-column flex-md-row mb-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
+                            <a class="nav-link" href="@Url.Action("Account", "User" , new { id = Model.Id })"><i class="bx bx-cog me-1"></i> Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-cog me-1"></i> Account Setting</a>
@@ -65,17 +65,28 @@
                                     <div class="mb-3 col-md-6">
                                         <label for="email" class="form-label">E-mail</label>
                                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @disabled = "disabled" })
                                     </div>
 
-                                    <div class="mb-3 col-md-6">
 
-                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (Session["role"].ToString().Equals(Model.Role) && Session["email"].ToString().Equals(Model.Email))
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    }
+
+
+
 
                                     <div class="mb-3 col-md-6">
                                         <label for="organization" class="form-label">Phone</label>
@@ -88,6 +99,21 @@
                                         @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @Value = Model.DOB.Value.Date.ToString("yyyy-MM-dd"), @type = "date", @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                     </div>
+
+                                    @{
+                                        if (Session["role"].ToString().Equals(User.IsInRole("Admin")) && Session["email"].ToString().Equals(Model.Email))
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    }
 
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label" for="Role">Role</label>
@@ -112,7 +138,7 @@
                                     <div class="mb-3 col-md-6">
                                         <label for="zipCode" class="form-label">Status</label>
                                         @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger", @disabled = "disabled" })
                                     </div>
 
                                     <div class="mb-3 col-md-6">
@@ -124,7 +150,7 @@
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label" for="AccountCreateTime">Login Time</label>
 
-                                        @Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                                         @Html.ValidationMessageFor(model => model.LoginTime, "", new { @class = "text-danger" })
 
                                     </div>

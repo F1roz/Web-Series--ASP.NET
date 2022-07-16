@@ -77,26 +77,7 @@ namespace WebSeries.Controllers
                     db.SaveChanges();
                     return RedirectToAction("List");
                 }
-                
-                //if (user != null)
-                //{
-                //    var db = new WebSeriesDBEntities();
-                    
-                    
-                   
-                //    db.SaveChanges();
-                    
-                //}
-                
             }
-            //if (ModelState.IsValid)
-            //{
-            //    v
-            //    var user = (from n in db.Users where n.Id == u.Id select n).FirstOrDefault();
-            //    db.Entry(user).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("List");
-            //}
             return View();
         }
 
