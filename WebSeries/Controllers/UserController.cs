@@ -60,17 +60,34 @@ namespace WebSeries.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AccountSetting([Bind(Include = "Id,Name,Email,Password,Phone,DOB,Role,Address1,Address2,Status,AccountCreateTime,LoginTime")] User user)
         {
-            var db = new WebSeriesDBEntities();
+            
             if (ModelState.IsValid)
             {
-                Login log = new Login();
-                var u = (from lt in db.Logins where lt.Email == user.Email select lt).FirstOrDefault();
-                log.Name = u.Name;
-                log.Password = user.Password;
-                log.Role = user.Role;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("List");
+                if (user != null)
+                {
+                    var db = new WebSeriesDBEntities();
+                    var u = (from lt in db.Logins where lt.Email == user.Email select lt).FirstOrDefault();
+                    
+                    u.Email = user.Email;
+                    u.Name = user.Name;
+                    u.Password = user.Password;
+                    u.Role = user.Role;
+                    db.Entry(user).State = EntityState.Modified;
+                    db.Entry(u).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("List");
+                }
+                
+                //if (user != null)
+                //{
+                //    var db = new WebSeriesDBEntities();
+                    
+                    
+                   
+                //    db.SaveChanges();
+                    
+                //}
+                
             }
             //if (ModelState.IsValid)
             //{
