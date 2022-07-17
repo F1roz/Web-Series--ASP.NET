@@ -123,6 +123,7 @@
     <Compile Include="Controllers\PackageAdminController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="EntityFramework\Archive.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
@@ -142,9 +143,6 @@
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Session.cs">
-      <DependentUpon>WebSeriesDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\sysdiagram.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\User.cs">
@@ -327,6 +325,8 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
+    <Content Include="Views\Video\VideoList.cshtml" />
+    <Content Include="Views\Video\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -336,6 +336,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FTP\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
