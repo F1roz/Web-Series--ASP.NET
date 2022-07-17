@@ -322,6 +322,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\PackageAdmin\Index.cshtml" />
     <Content Include="Views\Package\PackageCreate.cshtml" />
+    <Content Include="Views\Package\PackageEdit.cshtml" />
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
