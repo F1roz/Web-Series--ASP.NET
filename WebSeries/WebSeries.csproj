@@ -327,6 +327,7 @@
     <Content Include="Views\User\AccountSetting.cshtml" />
     <Content Include="Views\Video\VideoList.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
+    <Content Include="Views\Video\Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
