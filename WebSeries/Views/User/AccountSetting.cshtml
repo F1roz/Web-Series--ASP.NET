@@ -1,0 +1,182 @@
+﻿@model WebSeries.EntityFramework.User
+
+@{
+    ViewBag.Title = "AccountSetting";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Account</h4>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Account", "User" , new { id = Model.Id })"><i class="bx bx-cog me-1"></i> Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-cog me-1"></i> Account Setting</a>
+                        </li>
+
+                    </ul>
+                    <div class="card mb-4">
+                        <h5 class="card-header">Profile Details</h5>
+                        <!-- Account -->
+                        <div class="card-body">
+                            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                <img src="~/assets/img/avatars/1.png"
+                                     alt="user-avatar"
+                                     class="d-block rounded"
+                                     height="100"
+                                     width="100"
+                                     id="uploadedAvatar" />
+
+                                <div class="button-wrapper">
+                                    <h3><span class="d-none d-sm-block">@Html.DisplayFor(modelItem => Model.Name)</span></h3>
+
+                                    <p class="text-muted mb-0">Basic Pack</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <form id="formAccountSettings" method="post">
+                                <div class="row">
+
+
+
+                                    <div class="mb-3 col-md-6">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.Id)
+                                        <label for="firstName" class="form-label">Name</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @disabled = "disabled" })
+                                    </div>
+
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (Session["role"].ToString().Equals(Model.Role) && Session["email"].ToString().Equals(Model.Email))
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    }
+
+
+
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="organization" class="form-label">Phone</label>
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="DOB">Date of Birth</label>
+                                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @Value = Model.DOB.Value.Date.ToString("yyyy-MM-dd"), @type = "date", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    @{
+                                        if (Session["role"].ToString().Equals(User.IsInRole("Admin")) && Session["email"].ToString().Equals(Model.Email))
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    }
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="Role">Role</label>
+
+                                        @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="address" class="form-label">Permanent Address</label>
+                                        @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="state" class="form-label">Present Address (Optional)</label>
+                                        @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="zipCode" class="form-label">Status</label>
+                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger", @disabled = "disabled" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="AccountCreateTime">Member Since</label>
+                                        @Html.EditorFor(model => model.AccountCreateTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.AccountCreateTime, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="AccountCreateTime">Login Time</label>
+
+                                        @Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.LoginTime, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                </div>
+
+                                <div class="mt-2">
+                                    <input type="submit" value="Save changes" class="btn btn-primary me-2" />
+
+                                    @Html.ActionLink("Cancel", "List", "User", null, new { @class = "btn btn-outline-secondary" })
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
