@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebSeries.EntityFramework.Video>
+@{
+    ViewBag.Title = "Video List";
+}
+
+
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Videos /</span> List</h4>
+
+        <!-- Hoverable Table rows -->
+        <div class="card">
+            <h5 class="card-header">Video List</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th> SL no. </th>
+                            <th>Video Title</th>
+                            <th>Description</th>
+                            <th>
+                                Upload Date
+                            </th>
+
+
+                            <th>Uploaded By</th>
+                            <th>Video Path</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i>@i</td>
+                                @{i++;}
+                                <td>@Html.DisplayFor(modelItem => item.VideoTitle)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UploadDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.VideoPath)</td>
+                                <td><span class="badge bg-label-primary me-1">@Html.DisplayFor(modelItem => item.Status)</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button"
+                                                class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Account", "User" , new { id = item.Id })"><i class="bx bx-info-circle me-1"></i>Info</a>
+
+                                            <a class="dropdown-item" href="@Url.Action("AccountSetting", "User" , new { id = item.Id })"><i class="bx bx-edit-alt me-1"></i>Account Setting</a>
+
+                                            <a class="dropdown-item" href="@Url.Action("Account", "User" , new { id = item.Id })"><i class="bx bx-trash me-1"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+                                    @*<a class="dropdown-item" href="@Url.Action("Account", "User" , new { id = item.Id })"><button type="button" class="btn btn-info"><i class="bx bx-info-circle me-1"></i>Info</button></a>*@
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/ Hoverable Table rows -->
+
+    </div>
+
+</div>
+
+
+@section scripts
+{
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Page JS -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+
+}
