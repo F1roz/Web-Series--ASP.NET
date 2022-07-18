@@ -78,6 +78,16 @@
           <Property Name="OS" Type="nvarchar" MaxLength="30" />
           <Property Name="LoginId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -102,10 +112,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VideoTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
-          <Property Name="UploadDate" Type="datetime" />
-          <Property Name="Status" Type="varchar" MaxLength="7" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="VideoPath" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="VideoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="UploadDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Archives_Videos">
           <End Role="Videos" Type="Self.Videos" Multiplicity="1" />
@@ -199,6 +209,7 @@
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salarys" EntityType="Self.Salarys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Archives_Videos" Association="Self.FK_Archives_Videos">
@@ -316,6 +327,16 @@
           <Property Name="LoginId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Login" Relationship="Self.FK_Sessions_Logins" FromRole="Sessions" ToRole="Logins" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -344,10 +365,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VideoTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UploadDate" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="VideoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VideoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Archives" Relationship="Self.FK_Archives_Videos" FromRole="Videos" ToRole="Archives" />
           <NavigationProperty Name="User" Relationship="Self.FK_Videos_Users" FromRole="Videos" ToRole="Users" />
         </EntityType>
@@ -443,6 +464,7 @@
           <EntitySet Name="Packages" EntityType="Self.Package" />
           <EntitySet Name="Salarys" EntityType="Self.Salary" />
           <EntitySet Name="Sessions" EntityType="Self.Session" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Videos" EntityType="Self.Video" />
           <AssociationSet Name="FK_Archives_Videos" Association="Self.FK_Archives_Videos">
@@ -560,6 +582,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WebSeriesDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WebSeriesDBModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -584,10 +617,10 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="VideoPath" ColumnName="VideoPath" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
