@@ -64,42 +64,47 @@
                         <h4 class="mb-2">Welcome to Login</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
                         <span class="text-danger text-center"> @Html.ViewBag.Msg </span>
-                        <form id="formAuthentication" class="mb-3" action="" method="POST">
-                            <div class="mb-3">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email or Username", @autofocus = "" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="mb-3 form-password-toggle">
-                                <div class="d-flex justify-content-between">
-                                    <label class="form-label" for="password">Password</label>
-                                    <a href="auth-forgot-password-basic.html">
-                                        <small>Forgot Password?</small>
-                                    </a>
-                                </div>
-                                <div class="input-group input-group-merge">
-                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter password", @autofocus = "", aria_describedby = "password" } })
-                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                                </div>
-                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember-me" />
-                                    <label class="form-check-label" for="remember-me"> Remember Me </label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <input class="btn btn-primary d-grid w-100" type="submit" value="Sign in">
-                            </div>
-                        </form>
 
-                        <p class="text-center">
-                            <span>New on our platform?</span>
-                            <a href="/Auth/Register">
-                                <span>Create an account</span>
-                            </a>
-                        </p>
-                    </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <form id="formAuthentication" class="mb-3" action="" method="POST">
+                                <div class="mb-3">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email or Username", @autofocus = "" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="mb-3 form-password-toggle">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="form-label" for="password">Password</label>
+                                        <a href="auth-forgot-password-basic.html">
+                                            <small>Forgot Password?</small>
+                                        </a>
+                                    </div>
+                                    <div class="input-group input-group-merge">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter password", @autofocus = "", aria_describedby = "password" } })
+                                        <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="remember-me" />
+                                        <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <input class="btn btn-primary d-grid w-100" type="submit" value="Sign in">
+                                </div>
+                            </form>
+                        }
+                            <p class="text-center">
+                                <span>New on our platform?</span>
+                                <a href="/Auth/Register">
+                                    <span>Create an account</span>
+                                </a>
+                            </p>
+                        </div>
                 </div>
                 <!-- /Register -->
             </div>

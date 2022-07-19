@@ -19,6 +19,7 @@ namespace WebSeries.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(Login loginData)
         {
             var db = new WebSeriesDBEntities();
@@ -55,7 +56,14 @@ namespace WebSeries.Controllers
                 db.SaveChanges();
 
                 FormsAuthentication.SetAuthCookie(isLoggin.Name, true);
+                //HttpCookie userInfo = new HttpCookie("userInfo");
+                //userInfo["role"] = isLoggin.Role;
+                //userInfo["email"] = isLoggin.Email;
+                //userInfo.Expires.Add(new TimeSpan(1, 0, 0));
+                //Response.Cookies.Add(userInfo);
+
                 Session["role"] = isLoggin.Role;
+                Session["email"] = isLoggin.Email;
                 return RedirectToAction("List","User");
             }
             else
@@ -72,6 +80,7 @@ namespace WebSeries.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(User add)
         {
             var db = new WebSeriesDBEntities();
