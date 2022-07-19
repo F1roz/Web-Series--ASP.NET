@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +14,7 @@ namespace WebSeries.Controllers
     public class UserController : Controller
     {
         // GET: User
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         public ActionResult List()
         {
             var db = new WebSeriesDBEntities();
@@ -22,28 +23,7 @@ namespace WebSeries.Controllers
             return View(u);
         }
 
-        //[HttpGet]
-        //public ActionResult Profile()
-        //{
-        //    if (Session["Email"] != null)
-        //    {
-        //        var email = Session["Email"].ToString();
-        //        var useer = (from u in Project.Systemusers
-        //                     where u.U_username == username
-        //                     select u).FirstOrDefault();
-
-        //        return View(useer);
-        //    }
-        //    return View();
-        //}
-        //public ActionResult Profile(int id)
-        //{
-        //    var db = new WebSeriesDBEntities();
-        //    var profile = (from user in db.Users where user.Id == id select user).SingleOrDefault();
-
-        //    return View();
-        //}
-
+        [HttpGet]
         public ActionResult Account(int? id)
         {
             if (id == null)
@@ -59,7 +39,7 @@ namespace WebSeries.Controllers
             return View(user);
         }
 
-
+        
         public ActionResult AccountSetting(int? id)
         {
             if (id == null)
@@ -80,14 +60,14 @@ namespace WebSeries.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AccountSetting([Bind(Include = "Id,Name,Email,Password,Phone,DOB,Role,Address1,Address2,Status,AccountCreateTime,LoginTime")] User user)
         {
-
+            
             if (ModelState.IsValid)
             {
                 if (user != null)
                 {
                     var db = new WebSeriesDBEntities();
                     var u = (from lt in db.Logins where lt.Email == user.Email select lt).FirstOrDefault();
-
+                    
                     u.Email = user.Email;
                     u.Name = user.Name;
                     u.Password = user.Password;
@@ -127,15 +107,5 @@ namespace WebSeries.Controllers
             db.SaveChanges();
             return RedirectToAction("List");
         }
-
-        public ActionResult Subsciptions()
-        {
-            var db = new WebSeriesDBEntities();
-            List<Package> packages = db.Packages.ToList();
-            var p = packages;
-            return View(p);
-        }
-
-
     }
 }

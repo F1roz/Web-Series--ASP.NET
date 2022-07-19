@@ -66,6 +66,14 @@ namespace WebSeries.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //{
+            //    WebSeriesDBEntities db = new WebSeriesDBEntities();
+            //    var data = db.Packages.Find(Session["Id"]);
+            //    db.Entry(data).CurrentValues.SetValues(add);
+            //    db.SaveChanges();
+            //    ViewBag.Msg = "Append";
+            //    return RedirectToAction("Index");
+            //}
             return View();
 
         }
