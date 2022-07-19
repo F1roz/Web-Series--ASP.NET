@@ -1,0 +1,28 @@
+﻿@model WebSeries.EntityFramework.Package
+
+@{
+    ViewBag.Title = "PackageEdit";
+}
+
+<h2>PackageEdit</h2>
+
+<form action="PackageEdit" method="post">
+    <input type="text" name="PackageAdminId" value="@Model.PackageAdminId" class="form-control" placeholder="PackageAdminId" hidden>
+    <input type="text" name="Id" value="@Model.Id" class="form-control" placeholder="Id" hidden>
+    <strong>Name</strong>: <input type="text" name="Name" value="@Model.Name" class="form-control" />
+    @Html.ValidationMessage("Name", new { @class = "text-danger" })<br>
+    <strong>Price</strong>: <input type="text" name="Price" value="@Model.Price" class="form-control" />
+    @Html.ValidationMessage("Price", new { @class = "text-danger" })<br>
+    <strong>Desc</strong> : <input type="text" name="Desc" value="@Model.Description" class="form-control" />
+    @Html.ValidationMessage("Desc", new { @class = "text-danger" })<br>
+    <strong>Promo</strong>: <input type="text" name="Code" value="@Model.Code" class="form-control" />
+    @Html.ValidationMessage("Code", new { @class = "text-danger" })<br>
+
+
+
+    <input type="submit" class="btn btn-success" />
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</form>

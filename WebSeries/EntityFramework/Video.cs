@@ -26,6 +26,7 @@ namespace WebSeries.EntityFramework
         public Nullable<System.DateTime> UploadDate { get; set; }
         public string Status { get; set; }
         public int UserId { get; set; }
+        public string VideoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archive> Archives { get; set; }

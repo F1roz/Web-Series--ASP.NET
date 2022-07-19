@@ -26,7 +26,7 @@ namespace WebSeries.Controllers
                         select e).SingleOrDefault();
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie("data", true);
+                FormsAuthentication.SetAuthCookie(user.Name, true);
                 Session["user_name"] = user.Name;
                 Session["user_id"]= user.Id;
                 return RedirectToAction("Index", "Package");
