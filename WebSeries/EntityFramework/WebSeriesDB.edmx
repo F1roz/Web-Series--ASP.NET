@@ -115,7 +115,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="VideoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="UploadDate" Type="datetime" Nullable="false" />
+          <Property Name="UploadDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_Archives_Videos">
           <End Role="Videos" Type="Self.Videos" Multiplicity="1" />
@@ -367,7 +367,7 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="VideoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UploadDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Archives" Relationship="Self.FK_Archives_Videos" FromRole="Videos" ToRole="Archives" />
           <NavigationProperty Name="User" Relationship="Self.FK_Videos_Users" FromRole="Videos" ToRole="Users" />
         </EntityType>

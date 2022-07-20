@@ -125,50 +125,50 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="EntityFramework\Archive.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Expans.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Login.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Package.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\PackageAdmin.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Salary.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Session.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\sysdiagram.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\User.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Video.cs">
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\VideoFile.cs" />
-    <Compile Include="EntityFramework\WebSeriesDBEntities.Context.cs">
+    <Compile Include="EntityFramework\WebSeriesDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDBEntities.Context.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\WebSeriesDBEntities.cs">
+    <Compile Include="EntityFramework\WebSeriesDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDBEntities.tt</DependentUpon>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\WebSeriesDBEntities.Designer.cs">
+    <Compile Include="EntityFramework\WebSeriesDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebSeriesDBEntities.edmx</DependentUpon>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,15 +268,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="EntityFramework\WebSeriesDBEntities.Context.tt">
+    <Content Include="EntityFramework\WebSeriesDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriesDBEntities.edmx</DependentUpon>
-      <LastGenOutput>WebSeriesDBEntities.Context.cs</LastGenOutput>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriesDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityFramework\WebSeriesDBEntities.tt">
+    <Content Include="EntityFramework\WebSeriesDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSeriesDBEntities.edmx</DependentUpon>
-      <LastGenOutput>WebSeriesDBEntities.cs</LastGenOutput>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriesDB.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -298,12 +298,12 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
-    <EntityDeploy Include="EntityFramework\WebSeriesDBEntities.edmx">
+    <EntityDeploy Include="EntityFramework\WebSeriesDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebSeriesDBEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>WebSeriesDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EntityFramework\WebSeriesDBEntities.edmx.diagram">
-      <DependentUpon>WebSeriesDBEntities.edmx</DependentUpon>
+    <Content Include="EntityFramework\WebSeriesDB.edmx.diagram">
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -330,7 +330,6 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
-    <Content Include="Views\Video\VideoList.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
