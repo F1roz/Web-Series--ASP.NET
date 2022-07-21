@@ -46,7 +46,7 @@ namespace WebSeries.Controllers
 
             }
             ModelState.Clear();
-            ViewBag.Message = SaveToPhysicalLocation(v.VideoPath).Length;
+            ViewBag.Message = "Video Uploaded Successfully";
             //ViewBag.Message =video;
             return View();
         }
@@ -63,36 +63,7 @@ namespace WebSeries.Controllers
                 }
                 return View();
             }
-            /*string file = v.VideoPath;
-            string FileName = Path.GetFileNameWithoutExtension(v.ImageFile.FileName);*/
-            /* // Verify that the user selected a file
-             if (file != null && file.ContentLength > 0)
-             {
-                 // extract only the filename
-                 var fileName = Path.GetFileName(file.FileName);
-                 // store the file inside ~/App_Data/uploads folder
-                 var path = Path.Combine(Server.MapPath("~/FTP"), fileName);
-                 file.SaveAs(path);
-             }
-             // redirect back to the index action to show the form once again
-             return RedirectToAction("Upload");*/
-            /*try
-            {
-                if (file.ContentLength > 0)
-                {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/FTP/"), _FileName);
-                    file.SaveAs(_path);
-                    ViewBag.Message = _path;
-                }
-               
-                return View();
-            }
-            catch
-            {
-                ViewBag.Message = "File upload failed!!";
-                return View();
-            }*/
+            
         }
         private string SaveToPhysicalLocation(HttpPostedFileBase file)
         {

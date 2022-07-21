@@ -330,7 +330,6 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
-    <Content Include="Views\Video\VideoList.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
