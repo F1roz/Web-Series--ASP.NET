@@ -98,7 +98,6 @@
                                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                     </div>
 
-
                                     @if (User.Identity.IsAuthenticated)
                                     {
                                         if (Request.Cookies["userInfo"]["role"].ToString().Equals("Admin"))

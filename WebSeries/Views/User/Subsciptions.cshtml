@@ -26,7 +26,7 @@
                         <td><span class="badge bg-label-primary me-1">@p.Status</span></td>
                         <td>
                             <div class="demo-inline-spacing">
-                                <a class="btn btn-primary" href="@Url.Action("Subsciptions", "User")">Buy Now</a>
+                                <a class="btn btn-primary" href="@Url.Action("BuySubscription", "User" , new { id = p.Id })">Buy Now</a>
 </div>
                         </td>
                     </tr>

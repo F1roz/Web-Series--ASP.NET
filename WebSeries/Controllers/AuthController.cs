@@ -71,6 +71,13 @@ namespace WebSeries.Controllers
                 db.Sessions.Add(se);
                 db.SaveChanges();
 
+                FormsAuthentication.SetAuthCookie(isLoggin.Name, true);
+                HttpCookie userInfo = new HttpCookie("userInfo");
+                userInfo["role"] = isLoggin.Role;
+                userInfo["email"] = isLoggin.Email;
+                userInfo.Expires.Add(new TimeSpan(1, 0, 0));
+                Response.Cookies.Add(userInfo);
+
            
                 if (u.Email.Equals(uEmail) && u.Role == "Admin")
                 {
@@ -88,6 +95,7 @@ namespace WebSeries.Controllers
                 {
                     return RedirectToAction("List", "Video");
                 }
+
 
                 //return RedirectToAction("List","User");
             }

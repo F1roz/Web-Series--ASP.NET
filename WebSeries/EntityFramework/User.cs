@@ -23,7 +23,7 @@ namespace WebSeries.EntityFramework
             this.Salarys = new HashSet<Salary>();
             this.Videos = new HashSet<Video>();
         }
-    
+
         public int Id { get; set; }
 
         //name validation
