@@ -124,7 +124,52 @@
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="EntityFramework\Archive.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Expans.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Login.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Package.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\PackageAdmin.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Salary.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Session.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sysdiagram.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\User.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Video.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\VideoFile.cs" />
+    <Compile Include="EntityFramework\WebSeriesDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriesDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeriesDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\WebSeriesDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +268,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="EntityFramework\WebSeriesDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriesDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\WebSeriesDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+      <LastGenOutput>WebSeriesDB.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -243,6 +298,13 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <EntityDeploy Include="EntityFramework\WebSeriesDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebSeriesDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityFramework\WebSeriesDB.edmx.diagram">
+      <DependentUpon>WebSeriesDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -268,7 +330,6 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
-    <Content Include="Views\Video\VideoList.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
