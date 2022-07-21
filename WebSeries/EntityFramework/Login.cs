@@ -11,7 +11,8 @@ namespace WebSeries.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Login
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,15 @@ namespace WebSeries.EntityFramework
         {
             this.Sessions = new HashSet<Session>();
         }
-    
+
         public int Id { get; set; }
         public string Name { get; set; }
+        [Required(ErrorMessage = "Please enter your email address.")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Please enter your password.")]
         public string Password { get; set; }
         public string Role { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Session> Sessions { get; set; }
     }

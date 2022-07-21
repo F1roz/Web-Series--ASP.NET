@@ -1,0 +1,116 @@
+﻿@model WebSeries.EntityFramework.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Delete /</span> Account</h4>
+
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <h3>Are you sure you want to delete this?</h3>
+                <div>
+                   
+                    <div class="card mb-4">
+                        <h5 class="card-header">Profile Details</h5>
+                        <!-- Account -->
+                        <div class="card-body">
+                            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                <img src="~/assets/img/avatars/1.png"
+                                     alt="user-avatar"
+                                     class="d-block rounded"
+                                     height="100"
+                                     width="100"
+                                     id="uploadedAvatar" />
+
+                                <div class="button-wrapper">
+                                    <h3><span class="d-none d-sm-block">@Html.DisplayFor(modelItem => Model.Name)</span></h3>
+
+                                    <p class="text-muted mb-0"> User Type: @Html.DisplayFor(modelItem => Model.Role)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <form id="formAccountSettings" onsubmit="return false">
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <label for="firstName" class="form-label">Name</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="organization" class="form-label">Phone</label>
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="DOB">Date of Birth</label>
+                                        <div class="input-group input-group-merge">
+                                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control ", @disabled = "disabled" } })
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="address" class="form-label">Present Address</label>
+                                        @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+                                    
+                                    <div class="mb-3 col-md-6">
+                                        <label for="zipCode" class="form-label">Status</label>
+                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="Role">User Type</label>
+                                        @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="AccountCreateTime">Member Since</label>
+                                        @Html.EditorFor(model => model.AccountCreateTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                    </div>
+
+                                </div>
+                              
+                            </form>
+                        </div>
+                        <!-- /Account -->
+                    </div>
+
+                    <div class="card">
+                        <h5 class="card-header">Delete Account</h5>
+                        <div class="card-body">
+                            <div class="mb-3 col-12 mb-0">
+                                <div class="alert alert-warning">
+                                    <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
+                                    <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                        
+                        
+                           
+                        <button type="submit" class="btn btn-danger deactivate-account">Delete Account</button>
+                                <a class="btn btn-success me-2" href="@Url.Action("List", "User" , new { id = Model.Id })"><i class="bx bx-left-arrow-circle me-1"></i>Go Back</a>
+
+
+                            }
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

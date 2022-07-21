@@ -22,7 +22,6 @@ namespace WebSeries.EntityFramework
         }
     
         public int Id { get; set; }
-
         [Required(ErrorMessage = "Please enter  Name")]
         [MaxLength(10, ErrorMessage = "maximum 9 characters")]
         [RegularExpression("^[a-zA-Z- ]+$", ErrorMessage = "Enter Only Alphabate")]
@@ -31,7 +30,7 @@ namespace WebSeries.EntityFramework
         [Required(ErrorMessage = "Please enter  Password")]
         [MaxLength(8, ErrorMessage = "maximum 8 characters")]
         public string Password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages { get; set; }
     }
