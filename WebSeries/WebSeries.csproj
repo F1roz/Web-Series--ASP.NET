@@ -333,6 +333,7 @@
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

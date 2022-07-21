@@ -41,8 +41,8 @@ namespace WebSeries
             using (var contex = new WebSeriesDBEntities())
             {
                 var result = (from user in contex.Users
-                              join login in contex.Logins
-                              on user.Email equals login.Email 
+                              join login in contex.Logins on user.Email equals login.Email 
+                              where user.Name == username
                               select login.Role
                               ).ToArray();
                 return result;

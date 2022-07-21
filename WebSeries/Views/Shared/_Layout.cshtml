@@ -482,13 +482,9 @@
                                                             }
                                                     </span>
                                                     <small class="text-muted">
-                                                       
-                                                        @*@{ 
-                                                            string email = string.Empty;
                                                             
-                                                            email = Request.Cookies["email"].Value;
-                                                        }
-                                                        @email*@
+                                                            @Request.Cookies["userInfo"]["role"]
+                                                        
                                                     </small>
                                                 </div>
                                             </div>

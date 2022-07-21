@@ -14,7 +14,8 @@ namespace WebSeries.Controllers
     public class UserController : Controller
     {
         // GET: User
-        //[Authorize(Roles = "User")]
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             var db = new WebSeriesDBEntities();
@@ -24,6 +25,7 @@ namespace WebSeries.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, User, PackageManager, VideoManager")]
         public ActionResult Account(int? id)
         {
             if (id == null)
@@ -39,7 +41,8 @@ namespace WebSeries.Controllers
             return View(user);
         }
 
-        
+        [HttpGet]
+        [Authorize(Roles = "Admin, User, PackageManager, VideoManager")]
         public ActionResult AccountSetting(int? id)
         {
             if (id == null)
@@ -57,6 +60,7 @@ namespace WebSeries.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin, User, PackageManager, VideoManager")]
         [ValidateAntiForgeryToken]
         public ActionResult AccountSetting([Bind(Include = "Id,Name,Email,Password,Phone,DOB,Role,Address1,Address2,Status,AccountCreateTime,LoginTime")] User user)
         {
@@ -81,6 +85,8 @@ namespace WebSeries.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             var db = new WebSeriesDBEntities();
@@ -98,6 +104,7 @@ namespace WebSeries.Controllers
 
         // POST: Test/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

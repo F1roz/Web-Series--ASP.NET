@@ -9,6 +9,8 @@ using WebSeries.EntityFramework;
 
 namespace WebSeries.Controllers
 {
+    [Authorize]
+
     public class VideoController : Controller
     {
         // GET: Video

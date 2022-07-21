@@ -6,54 +6,56 @@
 
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <!-- Content wrapper -->
-    <div class="content-wrapper">
-        <!-- Content -->
-        <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Account</h4>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Account", "User" , new { id = Model.Id })"><i class="bx bx-cog me-1"></i> Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-cog me-1"></i> Account Setting</a>
-                        </li>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User /</span> Account</h4>
 
-                    </ul>
-                    <div class="card mb-4">
-                        <h5 class="card-header">Profile Details</h5>
-                        <!-- Account -->
-                        <div class="card-body">
-                            <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                <img src="~/assets/img/avatars/1.png"
-                                     alt="user-avatar"
-                                     class="d-block rounded"
-                                     height="100"
-                                     width="100"
-                                     id="uploadedAvatar" />
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Account", "User", new { id = Model.Id })"><i class="bx bx-cog me-1"></i> Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-cog me-1"></i> Account Setting</a>
+                    </li>
 
-                                <div class="button-wrapper">
-                                    <h3><span class="d-none d-sm-block">@Html.DisplayFor(modelItem => Model.Name)</span></h3>
+                </ul>
+                <div class="card mb-4">
+                    <h5 class="card-header">Profile Details</h5>
+                    <!-- Account -->
+                    <div class="card-body">
+                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                            <img src="~/assets/img/avatars/1.png"
+                                 alt="user-avatar"
+                                 class="d-block rounded"
+                                 height="100"
+                                 width="100"
+                                 id="uploadedAvatar" />
 
-                                    <p class="text-muted mb-0">Basic Pack</p>
-                                </div>
+                            <div class="button-wrapper">
+                                <h3><span class="d-none d-sm-block">@Html.DisplayFor(modelItem => Model.Name)</span></h3>
+
+                                <p class="text-muted mb-0">
+                                    User Type: @Html.DisplayFor(modelItem => Model.Role)
+                                </p>
                             </div>
                         </div>
+                    </div>
 
-                        <hr class="my-0" />
-                        <div class="card-body">
+                    <hr class="my-0" />
+                    <div class="card-body">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
                             <form id="formAccountSettings" method="post">
                                 <div class="row">
-
-
-
                                     <div class="mb-3 col-md-6">
                                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                         @Html.HiddenFor(model => model.Id)
@@ -64,29 +66,25 @@
 
                                     <div class="mb-3 col-md-6">
                                         <label for="email" class="form-label">E-mail</label>
-                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @disabled = "disabled" })
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     </div>
-
 
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        if (Session["role"].ToString().Equals(Model.Role) && Session["email"].ToString().Equals(Model.Email))
+                                        if (Request.Cookies["userInfo"]["role"].ToString().Equals(Model.Role) && Request.Cookies["userInfo"]["email"].ToString().Equals(Model.Email))
                                         {
                                             <div class="mb-3 col-md-6">
-                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="col-md-10">
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                </div>
+                                                <label for="Password" class="form-label">Password</label>
+                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                             </div>
-
                                         }
-
+                                        else
+                                        {
+                                            @Html.HiddenFor(model => model.Password)
+                                        }
                                     }
-
-
-
 
                                     <div class="mb-3 col-md-6">
                                         <label for="organization" class="form-label">Phone</label>
@@ -100,28 +98,31 @@
                                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                     </div>
 
-                                    @{
-                                        if (Session["role"].ToString().Equals(User.IsInRole("Admin")) && Session["email"].ToString().Equals(Model.Email))
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (Request.Cookies["userInfo"]["role"].ToString().Equals("Admin"))
                                         {
                                             <div class="mb-3 col-md-6">
-                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="col-md-10">
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                </div>
+                                                <label class="form-label" for="Role">Role</label>
+                                                <select id="Role" name="Role" class="select2 form-select">
+
+                                                    <option value="User" @(Model.Role == "User" ? "selected" : "")>User</option>
+                                                    <option value="Admin" @(Model.Role== "Admin" ? "selected" : "")>Admin</option>
+                                                    <option value="PackageManager" @(Model.Role == "PackageManager" ? "selected" : "")>Package Manager</option>
+                                                    <option value="VideoManager" @(Model.Role == "PackageManager" ? "selected" : "")>Video Manager</option>
+                                                </select>
                                             </div>
-
                                         }
-
+                                        else
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label" for="Role">Role</label>
+                                                @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                                            </div>
+                                        }
                                     }
-
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="Role">Role</label>
-
-                                        @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
-
-                                    </div>
 
                                     <div class="mb-3 col-md-6">
                                         <label for="address" class="form-label">Permanent Address</label>
@@ -135,43 +136,57 @@
                                         @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
                                     </div>
 
-                                    <div class="mb-3 col-md-6">
-                                        <label for="zipCode" class="form-label">Status</label>
-                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger", @disabled = "disabled" })
-                                    </div>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (Request.Cookies["userInfo"]["role"].ToString().Equals("Admin"))
+                                        {
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="Role">Status</label>
+                                    <select id="Status" name="Status" class="select2 form-select">
+
+                                        <option value="Valid" @(Model.Status == "Valid" ? "selected" : "")>Valid</option>
+                                        <option value="Invalid" @(Model.Status == "Invalid" ? "selected" : "")>Invalid</option>
+                                        
+                                    </select>
+                                </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="mb-3 col-md-6">
+                                                <label for="zipCode" class="form-label">Status</label>
+                                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                            </div>
+                                        }
+                                    }
 
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label" for="AccountCreateTime">Member Since</label>
-                                        @Html.EditorFor(model => model.AccountCreateTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.EditorFor(model => model.AccountCreateTime, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                         @Html.ValidationMessageFor(model => model.AccountCreateTime, "", new { @class = "text-danger" })
                                     </div>
 
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label" for="AccountCreateTime">Login Time</label>
 
-                                        @Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                         @Html.ValidationMessageFor(model => model.LoginTime, "", new { @class = "text-danger" })
-
                                     </div>
-
                                 </div>
 
                                 <div class="mt-2">
                                     <input type="submit" value="Save changes" class="btn btn-primary me-2" />
-
                                     @Html.ActionLink("Cancel", "List", "User", null, new { @class = "btn btn-outline-secondary" })
                                 </div>
-
                             </form>
-
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-}
+</div>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
