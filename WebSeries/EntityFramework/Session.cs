@@ -12,19 +12,18 @@ namespace WebSeries.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class PackageAdmin
+    public partial class Session
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PackageAdmin()
-        {
-            this.Packages = new HashSet<Package>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
+        public string Device { get; set; }
+        public string Platfrom { get; set; }
+        public string Browser { get; set; }
+        public Nullable<System.DateTime> LoginTime { get; set; }
+        public string GMT { get; set; }
+        public string OS { get; set; }
+        public int LoginId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages { get; set; }
+        public virtual Login Login { get; set; }
     }
 }
