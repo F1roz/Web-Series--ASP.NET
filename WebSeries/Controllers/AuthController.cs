@@ -56,11 +56,11 @@ namespace WebSeries.Controllers
                 db.SaveChanges();
 
                 FormsAuthentication.SetAuthCookie(isLoggin.Name, true);
-                //HttpCookie userInfo = new HttpCookie("userInfo");
-                //userInfo["role"] = isLoggin.Role;
-                //userInfo["email"] = isLoggin.Email;
-                //userInfo.Expires.Add(new TimeSpan(1, 0, 0));
-                //Response.Cookies.Add(userInfo);
+                HttpCookie userInfo = new HttpCookie("userInfo");
+                userInfo["role"] = isLoggin.Role;
+                userInfo["email"] = isLoggin.Email;
+                userInfo.Expires.Add(new TimeSpan(1, 0, 0));
+                Response.Cookies.Add(userInfo);
 
                 Session["role"] = isLoggin.Role;
                 Session["email"] = isLoggin.Email;

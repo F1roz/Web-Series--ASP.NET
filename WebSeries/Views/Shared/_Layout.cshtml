@@ -456,8 +456,8 @@
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            
- 
+
+
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -477,18 +477,18 @@
                                                 <div class="flex-grow-1">
                                                     <span class="fw-semibold d-block">
                                                         @if (User.Identity.IsAuthenticated)
-                                                            {
-                                                                @User.Identity.Name
-                                                            }
+                                                        {
+                                                            @User.Identity.Name
+                                                        }
                                                     </span>
                                                     <small class="text-muted">
-                                                       
-                                                        @*@{ 
-                                                            string email = string.Empty;
-                                                            
-                                                            email = Request.Cookies["email"].Value;
-                                                        }
-                                                        @email*@
+
+                                                        @*@{
+                                                                string email = string.Empty;
+
+                                                                email = Request.Cookies["email"].Value;
+                                                            }
+                                                            @email*@
                                                     </small>
                                                 </div>
                                             </div>
@@ -499,17 +499,20 @@
                                     </li>
                                     <li>
                                         @*@Url.Action("Account", "User", new { id = Model.Id }*@
-                                                                        <a class="dropdown-item" href=")">
-                                                                            <i class="bx bx-user me-2"></i>
-                                                                            <span class="align-middle">My Profile</span>
-                                                                        </a>
-                                                                    </li>
+                                        <a class="dropdown-item" href=")">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">My Profile</span>
+                                        </a>
+                                    </li>
                                     <li>
                                         @*@Url.Action("AccountSetting", "User", new { id = Model.Id })*@
                                         <a class="dropdown-item" href="">
                                             <i class="bx bx-cog me-2"></i>
                                             <span class="align-middle">Settings</span>
                                         </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Subsciptions", "User")">Subscription</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#">

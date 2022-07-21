@@ -107,13 +107,6 @@ namespace WebSeries.Controllers
             db.SaveChanges();
             return RedirectToAction("List");
         }
-
-        public ActionResult Subsciptions()
-        {
-            var db = new WebSeriesDBEntities();
-            List<Package> packages = db.Packages.ToList();
-            var p = packages;
-            return View(p);
-        }
+        
     }
 }

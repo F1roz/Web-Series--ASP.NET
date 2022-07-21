@@ -122,6 +122,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\PackageAdminController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="EntityFramework\Archive.cs">
@@ -330,6 +331,7 @@
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
+    <Content Include="Views\User\BuySubscription.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -341,6 +343,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="FTP\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

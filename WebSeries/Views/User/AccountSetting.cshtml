@@ -69,21 +69,23 @@
                                     </div>
 
 
-                                    @if (User.Identity.IsAuthenticated)
+                                    @*@if (User.Identity.IsAuthenticated)
                                     {
                                         if (Session["role"].ToString().Equals(Model.Role) && Session["email"].ToString().Equals(Model.Email))
                                         {
-                                            <div class="mb-3 col-md-6">
-                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="col-md-10">
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
 
+                                            
                                         }
 
-                                    }
+                                    }*@
+
+                                    <div class="mb-3 col-md-6">
+                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
 
 
@@ -100,20 +102,14 @@
                                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                                     </div>
 
-                                    @{
+                                    @*@{
                                         if (Session["role"].ToString().Equals(User.IsInRole("Admin")) && Session["email"].ToString().Equals(Model.Email))
                                         {
-                                            <div class="mb-3 col-md-6">
-                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="col-md-10">
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
+                                            
 
                                         }
 
-                                    }
+                                    }*@
 
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label" for="Role">Role</label>
