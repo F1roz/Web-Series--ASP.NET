@@ -146,12 +146,16 @@
     <Compile Include="EntityFramework\Session.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\sysdiagram.cs">
+      <DependentUpon>WebSeriesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\User.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Video.cs">
       <DependentUpon>WebSeriesDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\VideoFile.cs" />
     <Compile Include="EntityFramework\WebSeriesDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -327,11 +331,11 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\AccountSetting.cshtml" />
-    <Content Include="Views\Video\VideoList.cshtml" />
     <Content Include="Views\Video\List.cshtml" />
     <Content Include="Views\Video\Upload.cshtml" />
     <Content Include="Views\User\Subsciptions.cshtml" />
     <Content Include="Views\User\BuySubscription.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

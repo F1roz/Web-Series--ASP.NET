@@ -483,12 +483,10 @@
                                                     </span>
                                                     <small class="text-muted">
 
-                                                        @*@{
-                                                                string email = string.Empty;
+                                                            
+                                                            @Request.Cookies["userInfo"]["role"]
+                                                        
 
-                                                                email = Request.Cookies["email"].Value;
-                                                            }
-                                                            @email*@
                                                     </small>
                                                 </div>
                                             </div>

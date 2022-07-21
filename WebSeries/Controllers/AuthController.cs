@@ -15,6 +15,12 @@ namespace WebSeries.Controllers
         // GET: Auth
         public ActionResult Login()
         {
+            HttpCookie myCookie = new HttpCookie("userInfo");
+            myCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(myCookie);
+            Session.Abandon();
+            Session.Clear();
+            FormsAuthentication.SignOut();
             return View();
         }
 
@@ -40,8 +46,18 @@ namespace WebSeries.Controllers
                 string GMTSplitSrting = GMT.Split()[0];
                 var osNameVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
 
+                FormsAuthentication.SetAuthCookie(isLoggin.Name, true);
+                HttpCookie userInfo = new HttpCookie("userInfo");
+                userInfo["role"] = isLoggin.Role;
+                userInfo["email"] = isLoggin.Email;
+                userInfo.Expires.Add(new TimeSpan(1, 0, 0));
+                Response.Cookies.Add(userInfo);
+
+                String uEmail = Request.Cookies["userInfo"]["email"];
+                String uRole = Request.Cookies["userInfo"]["role"];
+
                 Session se = new Session();
-                se.Name = isLoggin.Name;
+                se.Name = uEmail;
                 se.Device = MachineName;
                 se.Platfrom = Platfrom;
                 se.Browser = BroswerName;
@@ -62,9 +78,26 @@ namespace WebSeries.Controllers
                 userInfo.Expires.Add(new TimeSpan(1, 0, 0));
                 Response.Cookies.Add(userInfo);
 
-                Session["role"] = isLoggin.Role;
-                Session["email"] = isLoggin.Email;
-                return RedirectToAction("List","User");
+           
+                if (u.Email.Equals(uEmail) && u.Role == "Admin")
+                {
+                    return RedirectToAction("List", "User");
+                }
+                if (u.Email.Equals(uEmail) && u.Role == "User")
+                {
+                    return RedirectToAction("Index", "PackageAdmin");
+                }
+                if (u.Email.Equals(uEmail) && u.Role == "PackageManager")
+                {
+                    return RedirectToAction("Index", "Package");
+                }
+                if (u.Email.Equals(uEmail) && u.Role == "VideoManager")
+                {
+                    return RedirectToAction("List", "Video");
+                }
+
+
+                //return RedirectToAction("List","User");
             }
             else
             {
@@ -126,10 +159,15 @@ namespace WebSeries.Controllers
         public ActionResult Logout()
         {
             var db = new WebSeriesDBEntities();
-            var isLoggin = (from s in db.Sessions where s.Name == User.Identity.Name select s).FirstOrDefault();
+            string email = Request.Cookies["userInfo"]["email"].ToString();
+            var isLoggin = (from s in db.Sessions where s.Name == email select s).FirstOrDefault();
             db.Sessions.Remove(isLoggin);
             db.SaveChanges();
-            Session.RemoveAll();
+            HttpCookie myCookie = new HttpCookie("userInfo");
+            myCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(myCookie);
+            Session.Abandon();
+            Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
