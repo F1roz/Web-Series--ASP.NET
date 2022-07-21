@@ -12,19 +12,13 @@ namespace WebSeries.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class PackageAdmin
+    public partial class Expans
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PackageAdmin()
-        {
-            this.Packages = new HashSet<Package>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
+        public System.DateTime Date { get; set; }
+        public int UserId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages { get; set; }
+        public virtual User User { get; set; }
     }
 }
